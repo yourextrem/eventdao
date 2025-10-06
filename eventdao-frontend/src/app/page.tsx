@@ -160,7 +160,7 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative" style={{backgroundImage: 'url(/images/eventdao_background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
       {/* Full Background Image */}
       <div className="fixed inset-0 z-0">
         <Image
@@ -170,7 +170,7 @@ export default function Home() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-5"></div>
       </div>
       
       {/* Content */}

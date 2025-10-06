@@ -118,14 +118,14 @@ export default function SubmitPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-900 text-white">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-900 border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-300">
-                  EventDAO
+                <Link href="/" className="text-2xl font-bold text-white hover:text-green-400">
+                  EVENTDAO
                 </Link>
                 <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
               </div>

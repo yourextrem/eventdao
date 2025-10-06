@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111827;
+  --foreground: #f9fafb;
 }
 
 @theme inline {
@@ -12,27 +12,27 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark mode disabled - force light theme */
-/* @media (prefers-color-scheme: dark) {
+/* Dark mode enabled - force dark theme */
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111827;
+    --foreground: #f9fafb;
   }
-} */
+}
 
 body {
-  background: #ffffff !important;
-  color: #171717 !important;
+  background: #111827 !important;
+  color: #f9fafb !important;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Override any dark mode styles */
+/* Force dark mode styles */
 html, body, #__next, [data-theme], .dark {
-  background-color: #ffffff !important;
-  color: #171717 !important;
+  background-color: #111827 !important;
+  color: #f9fafb !important;
 }
 
-/* Ensure all containers are light */
+/* Ensure all containers are dark */
 .min-h-screen, .bg-gray-50, .bg-white {
-  background-color: #ffffff !important;
+  background-color: #111827 !important;
 }

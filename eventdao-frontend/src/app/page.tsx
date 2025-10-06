@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { EventCard } from '@/components/EventCard';
@@ -60,7 +61,6 @@ export default function Home() {
   const {
     loading,
     error,
-    initializeEventDAO,
     createEvent,
     buyTicket,
     submitTicket,
@@ -158,15 +158,6 @@ export default function Home() {
     }
   };
 
-  const handleInitializeDAO = async () => {
-    try {
-      await initializeEventDAO();
-      setIsEventDAOInitialized(true);
-      await loadEvents();
-    } catch (err) {
-      console.error('Error initializing DAO:', err);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -188,15 +179,6 @@ export default function Home() {
               <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
-              {connected && (
-                <button
-                  onClick={handleInitializeDAO}
-                  disabled={loading}
-                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
-                >
-                  {loading ? 'Loading...' : 'Initialize DAO'}
-                </button>
-              )}
               {mounted && <WalletMultiButton />}
             </div>
           </div>
@@ -204,21 +186,41 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gray-900 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/eventdao_background.png"
+            alt="EventDAO Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Logo Section */}
             <div className="mb-8">
               <div className="flex items-center justify-center mb-4">
-                <span className="text-6xl font-bold text-green-400">#</span>
-                <span className="text-6xl font-bold text-white mx-2">EVENT</span>
-                <span className="text-6xl font-bold text-green-400">DAO</span>
-                <div className="ml-4 relative">
-                  <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🎫</span>
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full"></div>
-                </div>
+                <Image
+                  src="/images/eventdao.png"
+                  alt="EventDAO Logo"
+                  width={400}
+                  height={100}
+                  className="mb-4"
+                  priority
+                />
+              </div>
+              <div className="flex items-center justify-center mb-4">
+                <Image
+                  src="/images/eventdao_letter.png"
+                  alt="EventDAO Letter"
+                  width={200}
+                  height={50}
+                  className="mb-2"
+                />
               </div>
               <p className="text-xl text-gray-300 mb-4">EventDAO — Proof of Event on Solana</p>
             </div>
@@ -336,9 +338,21 @@ export default function Home() {
       </section>
 
       {/* Roadmap Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-gray-800 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl font-bold text-white mb-16 text-center">ROAD MAP</h2>
+          
+          {/* Roadmap Design Image */}
+          <div className="relative mb-8">
+            <Image
+              src="/images/roadmap_design.png"
+              alt="EventDAO Roadmap Design"
+              width={1200}
+              height={600}
+              className="mx-auto rounded-lg"
+            />
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
               <div className="text-center mb-4">

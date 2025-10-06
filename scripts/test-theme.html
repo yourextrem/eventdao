@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Test</title>
+    <style>
+        body {
+            background-color: #ffffff !important;
+            color: #171717 !important;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .test-box {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        /* Override any dark mode */
+        html, body, * {
+            background-color: #ffffff !important;
+            color: #171717 !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>EventDAO Theme Test</h1>
+    <div class="test-box">
+        <h2>Light Theme Test</h2>
+        <p>This should have a white background with dark text.</p>
+        <p>If you see dark background, there's a system-level dark mode override.</p>
+    </div>
+    
+    <div class="test-box">
+        <h3>Browser Settings Check:</h3>
+        <ul>
+            <li>Chrome: Settings > Appearance > Theme (set to Light)</li>
+            <li>Firefox: Settings > General > Theme (set to Light)</li>
+            <li>System: Check your OS dark mode settings</li>
+        </ul>
+    </div>
+    
+    <script>
+        console.log('Theme test page loaded');
+        console.log('Body background:', window.getComputedStyle(document.body).backgroundColor);
+        console.log('Body color:', window.getComputedStyle(document.body).color);
+    </script>
+</body>
+</html>

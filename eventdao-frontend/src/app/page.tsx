@@ -156,6 +156,11 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
+              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
+              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
+              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
               <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
@@ -185,57 +190,74 @@ export default function Home() {
         {!connected ? (
           <div className="text-center py-12">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                EventDAO
-              </h2>
-              <p className="text-xl text-gray-600 mb-4">
-                Proof of Event on Solana
-              </p>
-              <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
-                A decentralized event platform that enables attendance verification 
-                and NFT minting as proof of participation in various events.
+              <div className="mb-8">
+                <span className="text-6xl font-bold text-gray-900">0</span>
+                <span className="text-2xl font-semibold text-gray-600 ml-2">EVENT</span>
+              </div>
+              
+              <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                Decentralized Event Verification Market
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Stake tokens on the authenticity of events. Earn rewards when you&apos;re right. 
+                Build reputation through accurate event verification and mint NFT proof of attendance.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Event Verification</h3>
-                  <p className="text-blue-700">Stake and verify event authenticity transparently</p>
+              <div className="flex justify-center gap-4 mb-12">
+                <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                  Submit an Event
+                </button>
+                <button className="px-8 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium">
+                  Explore Events
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
+                  <div className="text-gray-600">Total Events</div>
                 </div>
-                <div className="bg-green-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-green-900 mb-2">NFT Attendance</h3>
-                  <p className="text-green-700">Mint unique NFTs as collectible proof of attendance</p>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
+                  <div className="text-gray-600">EVENT Staked</div>
                 </div>
-                <div className="bg-purple-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Reward System</h3>
-                  <p className="text-purple-700">Earn rewards for participation and accurate verification</p>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
+                  <div className="text-gray-600">Active Users</div>
                 </div>
               </div>
               
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center">
                 {mounted && <WalletMultiButton />}
-                <Link 
-                  href="/about" 
-                  className="px-6 py-3 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors font-medium"
-                >
-                  Learn More
-                </Link>
               </div>
             </div>
           </div>
         ) : (
           <>
-            {/* Action Bar */}
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">
-                Events List ({events.length})
-              </h2>
-              <button
-                onClick={() => setShowCreateModal(true)}
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
-              >
-                Create New Event
-              </button>
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+                <div className="text-2xl font-bold text-gray-900 mb-1">{events.length}</div>
+                <div className="text-gray-600">Total Events</div>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+                <div className="text-2xl font-bold text-gray-900 mb-1">0</div>
+                <div className="text-gray-600">EVENT Staked</div>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+                <div className="text-2xl font-bold text-gray-900 mb-1">1</div>
+                <div className="text-gray-600">Active Users</div>
+              </div>
             </div>
+
+            {/* Active Events Section */}
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Active Events</h2>
+                <Link href="/explore" className="text-blue-600 hover:text-blue-700 font-medium">
+                  View All
+                </Link>
+              </div>
 
                     {/* Events Grid */}
                     {isLoadingData ? (
@@ -259,8 +281,15 @@ export default function Home() {
                       </div>
                     ) : events.length === 0 ? (
                       <div className="text-center py-12">
-                        <p className="text-gray-500 text-lg">No events have been created yet.</p>
-                        <p className="text-gray-400 mt-2">Click &quot;Create New Event&quot; to get started!</p>
+                        <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
+                          <p className="text-gray-500 text-lg mb-4">No active events yet</p>
+                          <button
+                            onClick={() => setShowCreateModal(true)}
+                            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+                          >
+                            Submit the First Event
+                          </button>
+                        </div>
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -276,6 +305,7 @@ export default function Home() {
                         ))}
                       </div>
                     )}
+            </div>
           </>
         )}
       </main>

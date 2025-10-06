@@ -156,7 +156,7 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">Tentang</Link>
+              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               {connected && (
@@ -192,22 +192,22 @@ export default function Home() {
                 Proof of Event on Solana
               </p>
               <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
-                Platform event terdesentralisasi yang memungkinkan verifikasi kehadiran 
-                dan mint NFT sebagai bukti partisipasi di berbagai acara.
+                A decentralized event platform that enables attendance verification 
+                and NFT minting as proof of participation in various events.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Verifikasi Event</h3>
-                  <p className="text-blue-700">Stake dan verifikasi keaslian event secara transparan</p>
+                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Event Verification</h3>
+                  <p className="text-blue-700">Stake and verify event authenticity transparently</p>
                 </div>
                 <div className="bg-green-50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold text-green-900 mb-2">NFT Attendance</h3>
-                  <p className="text-green-700">Mint NFT unik sebagai bukti kehadiran yang dapat dikoleksi</p>
+                  <p className="text-green-700">Mint unique NFTs as collectible proof of attendance</p>
                 </div>
                 <div className="bg-purple-50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold text-purple-900 mb-2">Reward System</h3>
-                  <p className="text-purple-700">Dapatkan reward untuk partisipasi dan verifikasi yang akurat</p>
+                  <p className="text-purple-700">Earn rewards for participation and accurate verification</p>
                 </div>
               </div>
               
@@ -217,7 +217,7 @@ export default function Home() {
                   href="/about" 
                   className="px-6 py-3 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors font-medium"
                 >
-                  Pelajari Lebih Lanjut
+                  Learn More
                 </Link>
               </div>
             </div>
@@ -227,13 +227,13 @@ export default function Home() {
             {/* Action Bar */}
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold text-gray-900">
-                Daftar Event ({events.length})
+                Events List ({events.length})
               </h2>
               <button
                 onClick={() => setShowCreateModal(true)}
                 className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
               >
-                Buat Event Baru
+                Create New Event
               </button>
             </div>
 
@@ -246,21 +246,21 @@ export default function Home() {
                     ) : !isEventDAOInitialized ? (
                       <div className="text-center py-12">
                         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 max-w-md mx-auto">
-                          <h3 className="text-lg font-semibold text-yellow-800 mb-2">EventDAO Belum Diinisialisasi</h3>
-                          <p className="text-yellow-700 mb-4">Untuk menggunakan aplikasi, Anda perlu menginisialisasi EventDAO terlebih dahulu.</p>
+                          <h3 className="text-lg font-semibold text-yellow-800 mb-2">EventDAO Not Initialized</h3>
+                          <p className="text-yellow-700 mb-4">To use the application, you need to initialize EventDAO first.</p>
                           <button
                             onClick={handleInitializeDAO}
                             disabled={loading}
                             className="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition-colors disabled:opacity-50"
                           >
-                            {loading ? 'Menginisialisasi...' : 'Inisialisasi EventDAO'}
+                            {loading ? 'Initializing...' : 'Initialize EventDAO'}
                           </button>
                         </div>
                       </div>
                     ) : events.length === 0 ? (
                       <div className="text-center py-12">
-                        <p className="text-gray-500 text-lg">Belum ada event yang dibuat.</p>
-                        <p className="text-gray-400 mt-2">Klik &quot;Buat Event Baru&quot; untuk memulai!</p>
+                        <p className="text-gray-500 text-lg">No events have been created yet.</p>
+                        <p className="text-gray-400 mt-2">Click &quot;Create New Event&quot; to get started!</p>
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -188,15 +188,6 @@ export default function Home() {
                 className="mr-2"
               />
             </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
-              <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit</Link>
-              <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
-              <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
-            </nav>
             <div className="flex items-center gap-4">
               {mounted && <WalletMultiButton />}
             </div>

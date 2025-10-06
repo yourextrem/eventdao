@@ -47,16 +47,16 @@ export default function ExplorePage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-900">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                   EventDAO
                 </Link>
-                <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
               </div>
               <div className="flex items-center gap-4">
                 <WalletMultiButton />
@@ -67,7 +67,7 @@ export default function ExplorePage() {
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Explore Events</h1>
+            <h1 className="text-3xl font-bold text-white mb-4">Explore Events</h1>
             <p className="text-gray-600 mb-8">Connect your wallet to explore and stake on events</p>
             <WalletMultiButton />
           </div>
@@ -77,25 +77,25 @@ export default function ExplorePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                 EventDAO
               </Link>
-              <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
-              <Link href="/explore" className="text-blue-600 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
+              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
+              <Link href="/explore" className="text-green-400 font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-gray-300 hover:text-white font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-gray-300 hover:text-white font-medium">Wallet</Link>
+              <Link href="/admin" className="text-gray-300 hover:text-white font-medium">Admin</Link>
+              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               <WalletMultiButton />
@@ -106,7 +106,7 @@ export default function ExplorePage() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Explore Events</h1>
+          <h1 className="text-3xl font-bold text-white mb-4">Explore Events</h1>
           <p className="text-gray-600">Browse and stake on events for verification</p>
         </div>
 
@@ -118,7 +118,7 @@ export default function ExplorePage() {
               className={`px-4 py-2 rounded-md font-medium transition-colors ${
                 filter === 'all' 
                   ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
               }`}
             >
               All
@@ -128,7 +128,7 @@ export default function ExplorePage() {
               className={`px-4 py-2 rounded-md font-medium transition-colors ${
                 filter === 'concert' 
                   ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
               }`}
             >
               Concerts
@@ -138,7 +138,7 @@ export default function ExplorePage() {
               className={`px-4 py-2 rounded-md font-medium transition-colors ${
                 filter === 'conference' 
                   ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
               }`}
             >
               Conferences
@@ -148,7 +148,7 @@ export default function ExplorePage() {
               className={`px-4 py-2 rounded-md font-medium transition-colors ${
                 filter === 'sports' 
                   ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
               }`}
             >
               Sports
@@ -172,8 +172,8 @@ export default function ExplorePage() {
         {/* Events Grid */}
         {filteredEvents.length === 0 ? (
           <div className="text-center py-12">
-            <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-              <p className="text-gray-500 text-lg mb-4">No events found</p>
+            <div className="bg-gray-800 rounded-lg p-8 max-w-md mx-auto">
+              <p className="text-gray-400 text-lg mb-4">No events found</p>
               <Link
                 href="/submit"
                 className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
@@ -185,12 +185,12 @@ export default function ExplorePage() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {filteredEvents.map((event) => (
-              <div key={event.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <div key={event.id} className="bg-gray-900 border border-gray-800 rounded-lg p-6 hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{event.title}</h3>
+                    <h3 className="text-lg font-semibold text-white mb-2">{event.title}</h3>
                     <p className="text-gray-600 text-sm mb-2">{event.description}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
                       <span>📅 {event.date}</span>
                       <span>📍 {event.location}</span>
                       <span className="capitalize">🏷️ {event.category}</span>
@@ -208,19 +208,19 @@ export default function ExplorePage() {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="text-center">
                     <div className="text-lg font-bold text-green-600">{event.authenticStake} SOL</div>
-                    <div className="text-sm text-gray-500">Authentic</div>
+                    <div className="text-sm text-gray-400">Authentic</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-red-600">{event.hoaxStake} SOL</div>
-                    <div className="text-sm text-gray-500">Hoax</div>
+                    <div className="text-sm text-gray-400">Hoax</div>
                   </div>
                 </div>
 
                 <div className="flex justify-between items-center mb-4">
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-400">
                     Bond: <span className="font-medium">{event.bond} SOL</span>
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-400">
                     Time left: <span className="font-medium text-orange-600">{event.timeLeft}</span>
                   </div>
                 </div>

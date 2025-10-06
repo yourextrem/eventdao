@@ -124,10 +124,10 @@ export default function SubmitPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-300">
                   EventDAO
                 </Link>
-                <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
               </div>
               <div className="flex items-center gap-4">
                 <WalletMultiButton />
@@ -148,25 +148,25 @@ export default function SubmitPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
-                EventDAO
+              <Link href="/" className="text-2xl font-bold text-white hover:text-green-400">
+                EVENTDAO
               </Link>
-              <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-blue-600 font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
+              <Link href="/submit" className="text-green-400 font-medium">Submit</Link>
+              <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+              <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+              <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               <WalletMultiButton />
@@ -177,15 +177,15 @@ export default function SubmitPage() {
 
       <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Submit an Event</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold text-white mb-4">Submit an Event</h1>
+          <p className="text-gray-300">
             Submit an event for community verification. Stake a bond to ensure quality submissions.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-2">
               Event Title *
             </label>
             <input
@@ -195,13 +195,13 @@ export default function SubmitPage() {
               value={formData.title}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               placeholder="e.g., Coldplay Concert Jakarta 2025"
             />
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
               Description *
             </label>
             <textarea
@@ -211,13 +211,13 @@ export default function SubmitPage() {
               onChange={handleInputChange}
               required
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               placeholder="Describe the event details..."
             />
           </div>
 
           <div>
-            <label htmlFor="eventUrl" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="eventUrl" className="block text-sm font-medium text-gray-300 mb-2">
               Event URL
             </label>
             <input
@@ -226,17 +226,17 @@ export default function SubmitPage() {
               name="eventUrl"
               value={formData.eventUrl}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               placeholder="https://example.com/event-details (optional)"
             />
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-400 mt-1">
               Optional: Provide official event URL or ticketing link for verification
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
                 Category *
               </label>
               <select
@@ -244,7 +244,7 @@ export default function SubmitPage() {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               >
                 <option value="concert">Concert</option>
                 <option value="conference">Conference</option>
@@ -256,7 +256,7 @@ export default function SubmitPage() {
             </div>
 
             <div>
-              <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
                 Event Date *
               </label>
               <input
@@ -266,13 +266,13 @@ export default function SubmitPage() {
                 value={formData.date}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="location" className="block text-sm font-medium text-gray-300 mb-2">
               Location *
             </label>
             <input
@@ -282,13 +282,13 @@ export default function SubmitPage() {
               value={formData.location}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
               placeholder="e.g., Jakarta Convention Center, Indonesia"
             />
           </div>
 
           <div>
-            <label htmlFor="bond" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="bond" className="block text-sm font-medium text-gray-300 mb-2">
               Bond Amount (SOL) *
             </label>
             <input
@@ -300,16 +300,16 @@ export default function SubmitPage() {
               required
               min="0.01"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
             />
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-400 mt-1">
               Bond will be slashed if the event is proven to be fake or misleading
             </p>
           </div>
 
           {/* Media Upload Section */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Event Media (Photos & Videos)
             </label>
             <div
@@ -346,7 +346,7 @@ export default function SubmitPage() {
                     onChange={(e) => handleFileUpload(e.target.files)}
                   />
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-400">
                   PNG, JPG, GIF, MP4, MOV up to 10MB each
                 </p>
               </div>
@@ -355,7 +355,7 @@ export default function SubmitPage() {
             {/* Uploaded Files Preview */}
             {uploadedFiles.length > 0 && (
               <div className="mt-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">Uploaded Files ({uploadedFiles.length})</h4>
+                <h4 className="text-sm font-medium text-gray-300 mb-2">Uploaded Files ({uploadedFiles.length})</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {uploadedFiles.map((file, index) => (
                     <div key={index} className="relative group">
@@ -386,7 +386,7 @@ export default function SubmitPage() {
                       </button>
                       <div className="mt-1">
                         <p className="text-xs text-gray-600 truncate">{file.name}</p>
-                        <p className="text-xs text-gray-500">{formatFileSize(file.size)}</p>
+                        <p className="text-xs text-gray-400">{formatFileSize(file.size)}</p>
                       </div>
                     </div>
                   ))}
@@ -410,7 +410,7 @@ export default function SubmitPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? 'Submitting...' : 'Submit Event'}
             </button>
@@ -428,7 +428,7 @@ export default function SubmitPage() {
                 });
                 setUploadedFiles([]);
               }}
-              className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-md hover:bg-gray-200 transition-colors font-medium"
+              className="flex-1 bg-gray-100 text-gray-300 py-3 px-6 rounded-md hover:bg-gray-200 transition-colors font-medium"
             >
               Cancel
             </button>

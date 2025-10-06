@@ -118,16 +118,16 @@ export default function WalletPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-900">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                   EventDAO
                 </Link>
-                <span className="ml-2 text-sm text-gray-500">Dev Dashboard</span>
+                <span className="ml-2 text-sm text-gray-400">Dev Dashboard</span>
               </div>
               <div className="flex items-center gap-4">
                 <WalletMultiButton />
@@ -138,7 +138,7 @@ export default function WalletPage() {
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">EventDAO Dev Dashboard</h1>
+            <h1 className="text-3xl font-bold text-white mb-4">EventDAO Dev Dashboard</h1>
             <p className="text-gray-600 mb-8">Connect your wallet to access the development dashboard</p>
             <WalletMultiButton />
           </div>
@@ -148,25 +148,25 @@ export default function WalletPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                 EventDAO
               </Link>
-              <span className="ml-2 text-sm text-gray-500">Dev Dashboard</span>
+              <span className="ml-2 text-sm text-gray-400">Dev Dashboard</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-blue-600 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
+              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
+              <Link href="/explore" className="text-gray-300 hover:text-white font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-gray-300 hover:text-white font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-green-400 font-medium">Wallet</Link>
+              <Link href="/admin" className="text-gray-300 hover:text-white font-medium">Admin</Link>
+              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               <WalletMultiButton />
@@ -177,7 +177,7 @@ export default function WalletPage() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Dev Dashboard</h1>
+          <h1 className="text-3xl font-bold text-white mb-4">Dev Dashboard</h1>
           <p className="text-gray-600">Manage your EVE tokens, view balances, and track transaction history</p>
         </div>
 
@@ -211,35 +211,35 @@ export default function WalletPage() {
 
         {/* Balance Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">Available Balance</h3>
-            <div className="text-2xl font-bold text-gray-900">{eveBalance.toFixed(2)} EVE</div>
-            <div className="text-sm text-gray-500 mt-1">EVE Tokens</div>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-sm font-medium text-gray-400 mb-2">Available Balance</h3>
+            <div className="text-2xl font-bold text-white">{eveBalance.toFixed(2)} EVE</div>
+            <div className="text-sm text-gray-400 mt-1">EVE Tokens</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">SOL Balance</h3>
-            <div className="text-2xl font-bold text-gray-900">{balance.toFixed(4)} SOL</div>
-            <div className="text-sm text-gray-500 mt-1">Network Fee</div>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-sm font-medium text-gray-400 mb-2">SOL Balance</h3>
+            <div className="text-2xl font-bold text-white">{balance.toFixed(4)} SOL</div>
+            <div className="text-sm text-gray-400 mt-1">Network Fee</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">Total Staked</h3>
-            <div className="text-2xl font-bold text-gray-900">{mockStats.totalStaked} EVE</div>
-            <div className="text-sm text-gray-500 mt-1">In Active Events</div>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-sm font-medium text-gray-400 mb-2">Total Staked</h3>
+            <div className="text-2xl font-bold text-white">{mockStats.totalStaked} EVE</div>
+            <div className="text-sm text-gray-400 mt-1">In Active Events</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">Net Earnings</h3>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-sm font-medium text-gray-400 mb-2">Net Earnings</h3>
             <div className="text-2xl font-bold text-green-600">+{mockStats.totalEarned} EVE</div>
-            <div className="text-sm text-gray-500 mt-1">Total Rewards</div>
+            <div className="text-sm text-gray-400 mt-1">Total Rewards</div>
           </div>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Staking Stats</h3>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Staking Stats</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Total Staked:</span>
@@ -256,8 +256,8 @@ export default function WalletPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Reputation</h3>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Reputation</h3>
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600 mb-2">{mockStats.reputation}</div>
               <div className="text-gray-600">Reputation Points</div>
@@ -265,13 +265,13 @@ export default function WalletPage() {
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div className="bg-purple-600 h-2 rounded-full" style={{width: '85%'}}></div>
                 </div>
-                <div className="text-sm text-gray-500 mt-1">85% to next level</div>
+                <div className="text-sm text-gray-400 mt-1">85% to next level</div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Quick Actions</h3>
             <div className="space-y-3">
               <button className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors">
                 Stake on Event
@@ -287,36 +287,36 @@ export default function WalletPage() {
         </div>
 
         {/* Transaction History */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Transaction History</h2>
+        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+          <h2 className="text-xl font-bold text-white mb-6">Transaction History</h2>
           
           {transactions.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-gray-500">No transactions yet</p>
+              <p className="text-gray-400">No transactions yet</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-800">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                       Type
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                       Amount
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                       Signature
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                       Timestamp
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-gray-900 divide-y divide-gray-200">
                   {transactions.map((tx, index) => (
                     <tr key={index}>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -339,16 +339,16 @@ export default function WalletPage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                           tx.status === 'Success' ? 'bg-green-100 text-green-800' :
-                          tx.status === 'Failed' ? 'bg-red-100 text-red-800' :
+                          tx.status === 'Failed' ? 'bg-red-100 text-red-200' :
                           'bg-yellow-100 text-yellow-800'
                         }`}>
                           {tx.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400 font-mono">
                         {tx.signature}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
                         {formatTimestamp(tx.timestamp)}
                       </td>
                     </tr>

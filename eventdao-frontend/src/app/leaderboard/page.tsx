@@ -87,16 +87,16 @@ export default function LeaderboardPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-900">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                   EventDAO
                 </Link>
-                <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
               </div>
               <div className="flex items-center gap-4">
                 <WalletMultiButton />
@@ -107,7 +107,7 @@ export default function LeaderboardPage() {
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Leaderboard</h1>
+            <h1 className="text-3xl font-bold text-white mb-4">Leaderboard</h1>
             <p className="text-gray-600 mb-8">Connect your wallet to view rankings</p>
             <WalletMultiButton />
           </div>
@@ -117,25 +117,25 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                 EventDAO
               </Link>
-              <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-blue-600 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
+              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
+              <Link href="/explore" className="text-gray-300 hover:text-white font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-green-400 font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-gray-300 hover:text-white font-medium">Wallet</Link>
+              <Link href="/admin" className="text-gray-300 hover:text-white font-medium">Admin</Link>
+              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               <WalletMultiButton />
@@ -146,7 +146,7 @@ export default function LeaderboardPage() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Leaderboard</h1>
+          <h1 className="text-3xl font-bold text-white mb-4">Leaderboard</h1>
           <p className="text-gray-600">Top verifiers and event authors in the EventDAO community</p>
         </div>
 
@@ -157,7 +157,7 @@ export default function LeaderboardPage() {
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
               timeframe === 'all' 
                 ? 'bg-blue-600 text-white' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
             }`}
           >
             All Time
@@ -167,7 +167,7 @@ export default function LeaderboardPage() {
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
               timeframe === 'month' 
                 ? 'bg-blue-600 text-white' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
             }`}
           >
             This Month
@@ -177,7 +177,7 @@ export default function LeaderboardPage() {
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
               timeframe === 'week' 
                 ? 'bg-blue-600 text-white' 
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-300 hover:bg-gray-200'
             }`}
           >
             This Week
@@ -186,11 +186,11 @@ export default function LeaderboardPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Top Verifiers */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Top Verifiers</h2>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-white mb-6">Top Verifiers</h2>
             <div className="space-y-4">
               {leaderboard.map((user) => (
-                <div key={user.rank} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div key={user.rank} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
                   <div className="flex items-center gap-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                       user.rank === 1 ? 'bg-yellow-100 text-yellow-800' :
@@ -201,15 +201,15 @@ export default function LeaderboardPage() {
                       {user.rank}
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{user.address}</div>
-                      <div className="text-sm text-gray-500">
+                      <div className="font-medium text-white">{user.address}</div>
+                      <div className="text-sm text-gray-400">
                         {user.wins}W / {user.losses}L • {user.accuracy}% accuracy
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold text-gray-900">{user.totalStaked} SOL</div>
-                    <div className="text-sm text-gray-500">{user.reputation} rep</div>
+                    <div className="font-semibold text-white">{user.totalStaked} SOL</div>
+                    <div className="text-sm text-gray-400">{user.reputation} rep</div>
                   </div>
                 </div>
               ))}
@@ -217,11 +217,11 @@ export default function LeaderboardPage() {
           </div>
 
           {/* Top Authors */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Top Authors</h2>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-white mb-6">Top Authors</h2>
             <div className="space-y-4">
               {topAuthors.map((author) => (
-                <div key={author.rank} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div key={author.rank} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
                   <div className="flex items-center gap-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                       author.rank === 1 ? 'bg-yellow-100 text-yellow-800' :
@@ -232,15 +232,15 @@ export default function LeaderboardPage() {
                       {author.rank}
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{author.address}</div>
-                      <div className="text-sm text-gray-500">
+                      <div className="font-medium text-white">{author.address}</div>
+                      <div className="text-sm text-gray-400">
                         {author.eventsSubmitted} submitted • {author.eventsVerified} verified
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-semibold text-gray-900">{author.totalBond} SOL</div>
-                    <div className="text-sm text-gray-500">{author.reputation} rep</div>
+                    <div className="font-semibold text-white">{author.totalBond} SOL</div>
+                    <div className="text-sm text-gray-400">{author.reputation} rep</div>
                   </div>
                 </div>
               ))}
@@ -251,7 +251,7 @@ export default function LeaderboardPage() {
         {/* Stats Summary */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="bg-blue-50 p-6 rounded-lg text-center">
-            <div className="text-2xl font-bold text-blue-600 mb-2">156</div>
+            <div className="text-2xl font-bold text-green-400 mb-2">156</div>
             <div className="text-blue-800">Total Verifiers</div>
           </div>
           <div className="bg-green-50 p-6 rounded-lg text-center">

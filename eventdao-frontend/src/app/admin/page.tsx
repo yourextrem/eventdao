@@ -18,16 +18,16 @@ export default function AdminPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-900">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                   EventDAO
                 </Link>
-                <span className="ml-2 text-sm text-gray-500">Admin Panel</span>
+                <span className="ml-2 text-sm text-gray-400">Admin Panel</span>
               </div>
               <div className="flex items-center gap-4">
                 <WalletMultiButton />
@@ -38,7 +38,7 @@ export default function AdminPage() {
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Admin Panel</h1>
+            <h1 className="text-3xl font-bold text-white mb-4">Admin Panel</h1>
             <p className="text-gray-600 mb-8">Connect your wallet to access admin functions</p>
             <WalletMultiButton />
           </div>
@@ -48,25 +48,25 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700">
+              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
                 EventDAO
               </Link>
-              <span className="ml-2 text-sm text-gray-500">Admin Panel</span>
+              <span className="ml-2 text-sm text-gray-400">Admin Panel</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-blue-600 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
+              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
+              <Link href="/explore" className="text-gray-300 hover:text-white font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-gray-300 hover:text-white font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-gray-300 hover:text-white font-medium">Wallet</Link>
+              <Link href="/admin" className="text-green-400 font-medium">Admin</Link>
+              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               <WalletMultiButton />
@@ -77,16 +77,16 @@ export default function AdminPage() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Admin Panel</h1>
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Panel</h1>
           <p className="text-gray-600">Manage EventDAO configuration and monitor system activity</p>
         </div>
 
         {/* Dev Mode Notice */}
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
+        <div className="bg-red-900 border border-red-700 rounded-lg p-4 mb-8">
           <div className="flex items-center">
             <div className="text-red-600 mr-3">🔒</div>
             <div>
-              <h3 className="text-sm font-medium text-red-800">Development Mode</h3>
+              <h3 className="text-sm font-medium text-red-200">Development Mode</h3>
               <p className="text-sm text-red-700 mt-1">
                 Admin functions are simulated for development. Real admin controls will be implemented with proper authorization.
               </p>
@@ -95,7 +95,7 @@ export default function AdminPage() {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200 mb-8">
+        <div className="border-b border-gray-800 mb-8">
           <nav className="-mb-px flex space-x-8">
             {tabs.map((tab) => (
               <button
@@ -103,8 +103,8 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
                   activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'border-blue-500 text-green-400'
+                    : 'border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-300'
                 }`}
               >
                 <span className="mr-2">{tab.icon}</span>
@@ -117,12 +117,12 @@ export default function AdminPage() {
         {/* Tab Content */}
         {activeTab === 'config' && (
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">System Configuration</h2>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-white mb-4">System Configuration</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Resolution Window (hours)
                   </label>
                   <input
@@ -133,7 +133,7 @@ export default function AdminPage() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Minimum Bond (EVE)
                   </label>
                   <input
@@ -145,7 +145,7 @@ export default function AdminPage() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Protocol Fee (%)
                   </label>
                   <input
@@ -157,7 +157,7 @@ export default function AdminPage() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Max Stake per User (EVE)
                   </label>
                   <input
@@ -175,12 +175,12 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Network Settings</h2>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-white mb-4">Network Settings</h2>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     RPC Endpoint
                   </label>
                   <input
@@ -191,7 +191,7 @@ export default function AdminPage() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Program ID
                   </label>
                   <input
@@ -207,25 +207,25 @@ export default function AdminPage() {
 
         {activeTab === 'events' && (
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Event Management</h2>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-white mb-4">Event Management</h2>
               
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-gray-800">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Event</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Stakes</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Event</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Status</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Stakes</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-gray-900 divide-y divide-gray-200">
                     <tr>
                       <td className="px-6 py-4">
                         <div>
-                          <div className="font-medium text-gray-900">Coldplay Concert Jakarta</div>
-                          <div className="text-sm text-gray-500">2025-03-15</div>
+                          <div className="font-medium text-white">Coldplay Concert Jakarta</div>
+                          <div className="text-sm text-gray-400">2025-03-15</div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -233,12 +233,12 @@ export default function AdminPage() {
                           Active
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-4 text-sm text-white">
                         <div>Authentic: 2.5 EVE</div>
                         <div>Hoax: 0.8 EVE</div>
                       </td>
                       <td className="px-6 py-4">
-                        <button className="text-blue-600 hover:text-blue-800 text-sm">Resolve</button>
+                        <button className="text-green-400 hover:text-blue-800 text-sm">Resolve</button>
                       </td>
                     </tr>
                   </tbody>
@@ -250,12 +250,12 @@ export default function AdminPage() {
 
         {activeTab === 'users' && (
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">User Management</h2>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-white mb-4">User Management</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-600">156</div>
+                  <div className="text-2xl font-bold text-green-400">156</div>
                   <div className="text-blue-800">Total Users</div>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
@@ -269,7 +269,7 @@ export default function AdminPage() {
               </div>
               
               <div className="text-center py-8">
-                <p className="text-gray-500">User management features coming soon</p>
+                <p className="text-gray-400">User management features coming soon</p>
               </div>
             </div>
           </div>
@@ -277,12 +277,12 @@ export default function AdminPage() {
 
         {activeTab === 'analytics' && (
           <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">System Analytics</h2>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <h2 className="text-xl font-bold text-white mb-4">System Analytics</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-600">2,847</div>
+                  <div className="text-2xl font-bold text-green-400">2,847</div>
                   <div className="text-blue-800">Total Stakes</div>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
@@ -300,7 +300,7 @@ export default function AdminPage() {
               </div>
               
               <div className="mt-8 text-center py-8">
-                <p className="text-gray-500">Detailed analytics dashboard coming soon</p>
+                <p className="text-gray-400">Detailed analytics dashboard coming soon</p>
               </div>
             </div>
           </div>

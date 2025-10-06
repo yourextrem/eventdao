@@ -14,7 +14,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-gray-800 rounded-lg border border-gray-700">
+    <div className="bg-black bg-opacity-40 rounded-lg border border-gray-600 backdrop-blur-sm">
       <button
         className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
@@ -160,9 +160,23 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800">
+    <div className="min-h-screen relative">
+      {/* Full Background Image */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/images/eventdao_background.png"
+          alt="EventDAO Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        {/* Header */}
+        <header className="bg-black bg-opacity-30 border-b border-gray-600 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -186,20 +200,8 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/eventdao_background.png"
-            alt="EventDAO Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Logo Section */}
             <div className="mb-8">
@@ -279,9 +281,9 @@ export default function Home() {
       </section>
 
       {/* Video Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-900 rounded-lg p-8">
+          <div className="bg-black bg-opacity-40 rounded-lg p-8 backdrop-blur-sm border border-gray-600">
             <div className="aspect-video bg-gray-700 rounded-lg flex items-center justify-center">
               <div className="text-center">
                 <div className="text-6xl mb-4">🎥</div>
@@ -293,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-12 text-center">FAQ</h2>
           <div className="space-y-4">
@@ -338,7 +340,7 @@ export default function Home() {
       </section>
 
       {/* Roadmap Section */}
-      <section className="py-16 bg-gray-800 relative">
+      <section className="py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl font-bold text-white mb-16 text-center">ROAD MAP</h2>
           
@@ -354,7 +356,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
               <div className="text-center mb-4">
                 <div className="text-4xl mb-2">⛏️</div>
                 <h3 className="text-xl font-bold text-green-400">Phase 1 - Foundation</h3>
@@ -364,7 +366,7 @@ export default function Home() {
                 and NFT proof-of-attendance minting, building the essential infrastructure for trustless event verification.
               </p>
             </div>
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
               <div className="text-center mb-4">
                 <div className="text-4xl mb-2">🌱</div>
                 <h3 className="text-xl font-bold text-green-400">Phase 2 - Ecosystem</h3>
@@ -374,7 +376,7 @@ export default function Home() {
                 achievement systems, and sponsor partnerships. Expand beyond crypto-native events.
               </p>
             </div>
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
               <div className="text-center mb-4">
                 <div className="text-4xl mb-2">🌍</div>
                 <h3 className="text-xl font-bold text-green-400">Phase 3 - Global Standard</h3>
@@ -389,9 +391,9 @@ export default function Home() {
       </section>
 
       {/* Join Movement Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gray-800 p-8 rounded-lg border border-gray-700">
+          <div className="bg-black bg-opacity-40 p-8 rounded-lg border border-gray-600 backdrop-blur-sm">
             <div className="flex items-center justify-center mb-4">
               <span className="text-2xl mr-2">🚀</span>
               <h2 className="text-3xl font-bold text-white">Join the Movement</h2>
@@ -433,6 +435,7 @@ export default function Home() {
         onClose={() => setShowCreateModal(false)}
         onCreateEvent={handleCreateEvent}
       />
+      </div>
     </div>
   );
 }

@@ -105,3 +105,4 @@ program-keypair.json
 !package.json
 !package-lock.json
 !src/idl/eventdao.json
+*.mp4

@@ -185,8 +185,16 @@ export default function Home() {
                 alt="EventDAO"
                 width={120}
                 height={30}
-                className="mr-2"
+                className="mr-8"
               />
+              <nav className="hidden md:flex items-center space-x-6">
+                <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+              </nav>
             </div>
             <div className="flex items-center gap-4">
               {mounted && <WalletMultiButton />}
@@ -210,30 +218,6 @@ export default function Home() {
                 priority
               />
             </div>
-
-            {/* Navigation Text for Other Pages */}
-            <div className="mb-16">
-              <div className="flex flex-wrap justify-center gap-8 text-lg">
-                <Link href="/submit" className="text-white hover:text-green-400 font-medium transition-colors">
-                  Submit Event
-                </Link>
-                <Link href="/explore" className="text-white hover:text-green-400 font-medium transition-colors">
-                  Explore Events
-                </Link>
-                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium transition-colors">
-                  Leaderboard
-                </Link>
-                <Link href="/wallet" className="text-white hover:text-green-400 font-medium transition-colors">
-                  Wallet
-                </Link>
-                <Link href="/admin" className="text-white hover:text-green-400 font-medium transition-colors">
-                  Admin
-                </Link>
-                <Link href="/about" className="text-white hover:text-green-400 font-medium transition-colors">
-                  About
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -241,11 +225,16 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="aspect-video bg-black bg-opacity-40 rounded-lg flex items-center justify-center backdrop-blur-sm border border-gray-600">
-            <div className="text-center">
-              <div className="text-6xl mb-4">🎥</div>
-              <p className="text-gray-400">Demo Video Coming Soon</p>
-            </div>
+          <div className="aspect-video bg-black bg-opacity-40 rounded-lg backdrop-blur-sm border border-gray-600 overflow-hidden">
+            <video
+              className="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              poster="/images/eventdao.png"
+            >
+              <source src="/videos/Vau1t X MidEvils.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>

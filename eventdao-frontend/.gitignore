@@ -100,7 +100,8 @@ test-ledger/
 
 # Program keypairs (keep these secure!)
 program-keypair.json
-*.json
 
-# But keep the IDL file
+# But keep important JSON files
+!package.json
+!package-lock.json
 !src/idl/eventdao.json

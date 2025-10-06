@@ -204,8 +204,8 @@ export default function Home() {
               <Image
                 src="/images/eventdao.png"
                 alt="EventDAO Logo"
-                width={600}
-                height={150}
+                width={900}
+                height={225}
                 className="mx-auto mb-8"
                 priority
               />

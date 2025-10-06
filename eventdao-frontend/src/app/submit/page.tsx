@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
@@ -18,11 +19,49 @@ export default function SubmitPage() {
   });
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [dragActive, setDragActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle event submission logic here
-    console.log('Submitting event:', formData);
+    if (!connected) {
+      alert('Please connect your wallet first');
+      return;
+    }
+    
+    setSubmitting(true);
+    try {
+      // Handle event submission logic here
+      console.log('Submitting event:', formData);
+      console.log('Uploaded files:', uploadedFiles);
+      
+      // Simulate submission delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      alert('Event submitted successfully!');
+      
+      // Reset form
+      setFormData({
+        title: '',
+        description: '',
+        eventUrl: '',
+        category: 'concert',
+        date: '',
+        location: '',
+        bond: 0.1
+      });
+      setUploadedFiles([]);
+      
+    } catch (error) {
+      console.error('Error submitting event:', error);
+      alert('Failed to submit event. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -322,11 +361,15 @@ export default function SubmitPage() {
                     <div key={index} className="relative group">
                       <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
                         {file.type.startsWith('image/') ? (
-                          <img
-                            src={URL.createObjectURL(file)}
-                            alt={file.name}
-                            className="w-full h-full object-cover"
-                          />
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={URL.createObjectURL(file)}
+                              alt={file.name}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                            />
+                          </div>
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <svg className="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -366,16 +409,29 @@ export default function SubmitPage() {
           <div className="flex gap-4">
             <button
               type="submit"
-              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium"
+              disabled={submitting}
+              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit Event
+              {submitting ? 'Submitting...' : 'Submit Event'}
             </button>
-            <Link
-              href="/"
-              className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-md hover:bg-gray-200 transition-colors font-medium text-center"
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({
+                  title: '',
+                  description: '',
+                  eventUrl: '',
+                  category: 'concert',
+                  date: '',
+                  location: '',
+                  bond: 0.1
+                });
+                setUploadedFiles([]);
+              }}
+              className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-md hover:bg-gray-200 transition-colors font-medium"
             >
               Cancel
-            </Link>
+            </button>
           </div>
         </form>
       </main>

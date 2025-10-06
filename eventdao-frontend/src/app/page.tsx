@@ -8,6 +8,30 @@ import { EventCard } from '@/components/EventCard';
 import { CreateEventModal } from '@/components/CreateEventModal';
 import { useEventDAO } from '@/hooks/useEventDAO';
 
+// FAQ Component
+const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-gray-800 rounded-lg border border-gray-700">
+      <button
+        className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="text-white font-medium">{question}</span>
+        <span className={`text-green-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+          ▼
+        </span>
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-4">
+          <p className="text-gray-300">{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 interface Event {
   id: number;
   title: string;
@@ -145,30 +169,30 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-gray-900 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900">EventDAO</h1>
-              <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
+              <h1 className="text-2xl font-bold text-white">EVENTDAO</h1>
+              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-700 hover:text-gray-900 font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-700 hover:text-gray-900 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-gray-900 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-700 hover:text-gray-900 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-700 hover:text-gray-900 font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">About</Link>
+              <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
+              <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit</Link>
+              <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore</Link>
+              <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+              <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+              <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+              <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
             </nav>
             <div className="flex items-center gap-4">
               {connected && (
                 <button
                   onClick={handleInitializeDAO}
                   disabled={loading}
-                  className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
                 >
                   {loading ? 'Loading...' : 'Initialize DAO'}
                 </button>
@@ -179,136 +203,215 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white">
-        {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 rounded-md p-4">
-            <p className="text-red-800">{error}</p>
-          </div>
-        )}
+      {/* Hero Section */}
+      <section className="relative bg-gray-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            {/* Logo Section */}
+            <div className="mb-8">
+              <div className="flex items-center justify-center mb-4">
+                <span className="text-6xl font-bold text-green-400">#</span>
+                <span className="text-6xl font-bold text-white mx-2">EVENT</span>
+                <span className="text-6xl font-bold text-green-400">DAO</span>
+                <div className="ml-4 relative">
+                  <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🎫</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full"></div>
+                </div>
+              </div>
+              <p className="text-xl text-gray-300 mb-4">EventDAO — Proof of Event on Solana</p>
+            </div>
 
-        {!connected ? (
-          <div className="text-center py-12">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <span className="text-6xl font-bold text-gray-900">0</span>
-                <span className="text-2xl font-semibold text-gray-600 ml-2">EVENT</span>
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Make Every Event Verifiable.
+            </h1>
+            
+            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+              EventDAO lets you prove that real-world events truly happened — verified on Solana, rewarded with NFTs.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+              <Link 
+                href="/submit"
+                className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <span>⚡</span>
+                Start a Claim
+              </Link>
+              <Link 
+                href="/explore"
+                className="px-8 py-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium flex items-center justify-center gap-2 border border-gray-700"
+              >
+                <span>📅</span>
+                View Events
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">{events.length}</div>
+                <div className="text-gray-400">Total Events</div>
               </div>
-              
-              <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                Decentralized Event Verification Market
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Stake tokens on the authenticity of events. Earn rewards when you&apos;re right. 
-                Build reputation through accurate event verification and mint NFT proof of attendance.
-              </p>
-              
-              <div className="flex justify-center gap-4 mb-12">
-                <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                  Submit an Event
-                </button>
-                <button className="px-8 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium">
-                  Explore Events
-                </button>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">0</div>
+                <div className="text-gray-400">EVENT Staked</div>
               </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
-                  <div className="text-gray-600">Total Events</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
-                  <div className="text-gray-600">EVENT Staked</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">0</div>
-                  <div className="text-gray-600">Active Users</div>
-                </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">1</div>
+                <div className="text-gray-400">Active Users</div>
               </div>
-              
+            </div>
+
+            {/* Wallet Connection */}
+            {!connected && (
               <div className="flex justify-center">
                 {mounted && <WalletMultiButton />}
               </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-16 bg-gray-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gray-900 rounded-lg p-8">
+            <div className="aspect-video bg-gray-700 rounded-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🎥</div>
+                <p className="text-gray-400">Demo Video Coming Soon</p>
+              </div>
             </div>
           </div>
-        ) : (
-          <>
-            {/* Stats Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-                <div className="text-2xl font-bold text-gray-900 mb-1">{events.length}</div>
-                <div className="text-gray-600">Total Events</div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center">FAQ</h2>
+          <div className="space-y-4">
+            {[
+              {
+                question: "What is EventDAO?",
+                answer: "EventDAO is a decentralized platform that allows users to verify real-world events on the Solana blockchain. Users can stake tokens on event authenticity and earn rewards for accurate verification."
+              },
+              {
+                question: "How does event verification work?",
+                answer: "Users submit event claims with supporting evidence. The community stakes tokens on whether the event is authentic or not. Resolution happens through APIs, news feeds, or oracles, and winners earn rewards."
+              },
+              {
+                question: "What is a Proof of Attendance NFT?",
+                answer: "A Proof of Attendance NFT (POAP) is a unique digital collectible that proves you attended a specific event. These NFTs are minted on Solana and can be collected, traded, or displayed."
+              },
+              {
+                question: "Do I need crypto to use EventDAO?",
+                answer: "Yes, you need SOL (Solana's native token) to pay for transaction fees and stake on events. You can get SOL from exchanges or use our faucet for testing."
+              },
+              {
+                question: "Is this gambling or betting?",
+                answer: "No, EventDAO is about verifying real-world events, not gambling. It's a prediction market focused on event authenticity verification."
+              },
+              {
+                question: "What kind of events can I submit?",
+                answer: "You can submit any verifiable real-world event like concerts, conferences, sports matches, or community gatherings. Events must have clear evidence and resolution criteria."
+              },
+              {
+                question: "How do rewards work?",
+                answer: "When you stake correctly on an event's authenticity, you earn a portion of the total staked amount from incorrect stakers. The more accurate you are, the more you earn."
+              },
+              {
+                question: "Why build on Solana?",
+                answer: "Solana offers fast, cheap transactions perfect for frequent staking and NFT minting. It also has excellent developer tools and a growing ecosystem."
+              }
+            ].map((faq, index) => (
+              <FAQItem key={index} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap Section */}
+      <section className="py-16 bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-5xl font-bold text-white mb-16 text-center">ROAD MAP</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+              <div className="text-center mb-4">
+                <div className="text-4xl mb-2">⛏️</div>
+                <h3 className="text-xl font-bold text-green-400">Phase 1 - Foundation</h3>
               </div>
-              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-                <div className="text-2xl font-bold text-gray-900 mb-1">0</div>
-                <div className="text-gray-600">EVENT Staked</div>
+              <p className="text-gray-300 text-sm">
+                Core event verification system with staking mechanism, accurate resolution through APIs, 
+                and NFT proof-of-attendance minting, building the essential infrastructure for trustless event verification.
+              </p>
+            </div>
+            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+              <div className="text-center mb-4">
+                <div className="text-4xl mb-2">🌱</div>
+                <h3 className="text-xl font-bold text-green-400">Phase 2 - Ecosystem</h3>
               </div>
-              <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-                <div className="text-2xl font-bold text-gray-900 mb-1">1</div>
-                <div className="text-gray-600">Active Users</div>
+              <p className="text-gray-300 text-sm">
+                Partner with event organizers, venues, and ticketing platforms. Launch community leaderboards, 
+                achievement systems, and sponsor partnerships. Expand beyond crypto-native events.
+              </p>
+            </div>
+            <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
+              <div className="text-center mb-4">
+                <div className="text-4xl mb-2">🌍</div>
+                <h3 className="text-xl font-bold text-green-400">Phase 3 - Global Standard</h3>
+              </div>
+              <p className="text-gray-300 text-sm">
+                Establish EventDAO as the universal standard for verifiable event attendance. Scale to millions 
+                of events worldwide, with seamless integration across all major platforms and industries.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Join Movement Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gray-800 p-8 rounded-lg border border-gray-700">
+            <div className="flex items-center justify-center mb-4">
+              <span className="text-2xl mr-2">🚀</span>
+              <h2 className="text-3xl font-bold text-white">Join the Movement</h2>
+            </div>
+            <p className="text-gray-300 mb-8 text-lg">
+              Build public trust through verifiable events. Submit your claim, verify with the community, 
+              and collect your digital proof of attendance on Solana.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+              <Link 
+                href="/submit"
+                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+              >
+                Submit a Claim
+              </Link>
+              <Link 
+                href="/explore"
+                className="px-8 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium"
+              >
+                Explore Claims
+              </Link>
+            </div>
+            <div className="text-sm text-gray-400">
+              <p className="mb-2">Built on Solana - Powered by Community</p>
+              <div className="flex justify-center gap-6">
+                <Link href="/" className="hover:text-green-400">Launch App</Link>
+                <Link href="/about" className="hover:text-green-400">Docs</Link>
+                <a href="#" className="hover:text-green-400">Join Discord</a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Active Events Section */}
-            <div className="mb-8">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">Active Events</h2>
-                <Link href="/explore" className="text-blue-600 hover:text-blue-700 font-medium">
-                  View All
-                </Link>
-              </div>
-
-                    {/* Events Grid */}
-                    {isLoadingData ? (
-                      <div className="text-center py-12">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                        <p className="text-gray-500">Loading events...</p>
-                      </div>
-                    ) : !isEventDAOInitialized ? (
-                      <div className="text-center py-12">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 max-w-md mx-auto">
-                          <h3 className="text-lg font-semibold text-yellow-800 mb-2">EventDAO Not Initialized</h3>
-                          <p className="text-yellow-700 mb-4">To use the application, you need to initialize EventDAO first.</p>
-                          <button
-                            onClick={handleInitializeDAO}
-                            disabled={loading}
-                            className="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition-colors disabled:opacity-50"
-                          >
-                            {loading ? 'Initializing...' : 'Initialize EventDAO'}
-                          </button>
-                        </div>
-                      </div>
-                    ) : events.length === 0 ? (
-                      <div className="text-center py-12">
-                        <div className="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-                          <p className="text-gray-500 text-lg mb-4">No active events yet</p>
-                          <button
-                            onClick={() => setShowCreateModal(true)}
-                            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
-                          >
-                            Submit the First Event
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {events.map((event) => (
-                          <EventCard
-                            key={event.id}
-                            event={event}
-                            onBuyTicket={handleBuyTicket}
-                            onUseTicket={handleUseTicket}
-                            hasTicket={userTickets.get(event.id)?.hasTicket || false}
-                            isTicketUsed={userTickets.get(event.id)?.isUsed || false}
-                          />
-                        ))}
-                      </div>
-                    )}
-            </div>
-          </>
-        )}
-      </main>
 
       {/* Create Event Modal */}
       <CreateEventModal

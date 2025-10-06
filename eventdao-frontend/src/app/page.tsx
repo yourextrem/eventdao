@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { EventCard } from '@/components/EventCard';
@@ -153,6 +154,10 @@ export default function Home() {
               <h1 className="text-2xl font-bold text-gray-900">EventDAO</h1>
               <span className="ml-2 text-sm text-gray-500">Solana Web3 Events</span>
             </div>
+            <nav className="hidden md:flex items-center space-x-6">
+              <Link href="/" className="text-gray-700 hover:text-gray-900 font-medium">Home</Link>
+              <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium">Tentang</Link>
+            </nav>
             <div className="flex items-center gap-4">
               {connected && (
                 <button
@@ -179,14 +184,42 @@ export default function Home() {
 
         {!connected ? (
           <div className="text-center py-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Selamat Datang di EventDAO
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Platform event terdesentralisasi di Solana blockchain
-            </p>
-            <div className="flex justify-center">
-              {mounted && <WalletMultiButton />}
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                EventDAO
+              </h2>
+              <p className="text-xl text-gray-600 mb-4">
+                Proof of Event on Solana
+              </p>
+              <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
+                Platform event terdesentralisasi yang memungkinkan verifikasi kehadiran 
+                dan mint NFT sebagai bukti partisipasi di berbagai acara.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-blue-900 mb-2">Verifikasi Event</h3>
+                  <p className="text-blue-700">Stake dan verifikasi keaslian event secara transparan</p>
+                </div>
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-green-900 mb-2">NFT Attendance</h3>
+                  <p className="text-green-700">Mint NFT unik sebagai bukti kehadiran yang dapat dikoleksi</p>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Reward System</h3>
+                  <p className="text-purple-700">Dapatkan reward untuk partisipasi dan verifikasi yang akurat</p>
+                </div>
+              </div>
+              
+              <div className="flex justify-center gap-4">
+                {mounted && <WalletMultiButton />}
+                <Link 
+                  href="/about" 
+                  className="px-6 py-3 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors font-medium"
+                >
+                  Pelajari Lebih Lanjut
+                </Link>
+              </div>
             </div>
           </div>
         ) : (

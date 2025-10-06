@@ -170,7 +170,7 @@ export default function Home() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
       
       {/* Content */}
@@ -180,8 +180,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-white">EVENTDAO</h1>
-              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
+              <Image
+                src="/images/eventdao_letter.png"
+                alt="EventDAO"
+                width={120}
+                height={30}
+                className="mr-2"
+              />
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
@@ -203,79 +208,41 @@ export default function Home() {
       <section className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Logo Section */}
-            <div className="mb-8">
-              <div className="flex items-center justify-center mb-4">
-                <Image
-                  src="/images/eventdao.png"
-                  alt="EventDAO Logo"
-                  width={400}
-                  height={100}
-                  className="mb-4"
-                  priority
-                />
-              </div>
-              <div className="flex items-center justify-center mb-4">
-                <Image
-                  src="/images/eventdao_letter.png"
-                  alt="EventDAO Letter"
-                  width={200}
-                  height={50}
-                  className="mb-2"
-                />
-              </div>
-              <p className="text-xl text-gray-300 mb-4">EventDAO — Proof of Event on Solana</p>
+            {/* Main Logo */}
+            <div className="mb-16">
+              <Image
+                src="/images/eventdao.png"
+                alt="EventDAO Logo"
+                width={600}
+                height={150}
+                className="mx-auto mb-8"
+                priority
+              />
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Make Every Event Verifiable.
-            </h1>
-            
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-              EventDAO lets you prove that real-world events truly happened — verified on Solana, rewarded with NFTs.
-            </p>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-              <Link 
-                href="/submit"
-                className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
-              >
-                <span>⚡</span>
-                Start a Claim
-              </Link>
-              <Link 
-                href="/explore"
-                className="px-8 py-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium flex items-center justify-center gap-2 border border-gray-700"
-              >
-                <span>📅</span>
-                View Events
-              </Link>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">{events.length}</div>
-                <div className="text-gray-400">Total Events</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">0</div>
-                <div className="text-gray-400">EVENT Staked</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">1</div>
-                <div className="text-gray-400">Active Users</div>
+            {/* Navigation Text for Other Pages */}
+            <div className="mb-16">
+              <div className="flex flex-wrap justify-center gap-8 text-lg">
+                <Link href="/submit" className="text-white hover:text-green-400 font-medium transition-colors">
+                  Submit Event
+                </Link>
+                <Link href="/explore" className="text-white hover:text-green-400 font-medium transition-colors">
+                  Explore Events
+                </Link>
+                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium transition-colors">
+                  Leaderboard
+                </Link>
+                <Link href="/wallet" className="text-white hover:text-green-400 font-medium transition-colors">
+                  Wallet
+                </Link>
+                <Link href="/admin" className="text-white hover:text-green-400 font-medium transition-colors">
+                  Admin
+                </Link>
+                <Link href="/about" className="text-white hover:text-green-400 font-medium transition-colors">
+                  About
+                </Link>
               </div>
             </div>
-
-            {/* Wallet Connection */}
-            {!connected && (
-              <div className="flex justify-center">
-                {mounted && <WalletMultiButton />}
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -283,12 +250,10 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-black bg-opacity-40 rounded-lg p-8 backdrop-blur-sm border border-gray-600">
-            <div className="aspect-video bg-gray-700 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🎥</div>
-                <p className="text-gray-400">Demo Video Coming Soon</p>
-              </div>
+          <div className="aspect-video bg-black bg-opacity-40 rounded-lg flex items-center justify-center backdrop-blur-sm border border-gray-600">
+            <div className="text-center">
+              <div className="text-6xl mb-4">🎥</div>
+              <p className="text-gray-400">Demo Video Coming Soon</p>
             </div>
           </div>
         </div>

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { EventCard } from '@/components/EventCard';
 import { CreateEventModal } from '@/components/CreateEventModal';
 import { useEventDAO } from '@/hooks/useEventDAO';
 
@@ -217,6 +216,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">EventDAO Demo</h2>
+            <p className="text-gray-300">Watch our introduction video</p>
+          </div>
+          <div className="aspect-video bg-black bg-opacity-40 rounded-lg backdrop-blur-sm border border-gray-600 overflow-hidden">
+            <video
+              className="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              poster="/images/eventdao_background.png"
+            >
+              <source src="/videos/Vau1t X MidEvils.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <section className="py-16">

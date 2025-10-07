@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
@@ -9,6 +10,11 @@ export default function ExplorePage() {
   const { connected } = useWallet();
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Mock data for demonstration
   const events = [
@@ -47,62 +53,93 @@ export default function ExplorePage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-gray-900">
-        {/* Header */}
-        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
-                  EventDAO
-                </Link>
-                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <WalletMultiButton />
+      <div className="min-h-screen relative">
+        {/* Background Image */}
+        <div className="fixed inset-0 z-0">
+          <Image
+            src="/images/eventdao_background.png"
+            alt="EventDAO Background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+            style={{
+              objectPosition: 'center top'
+            }}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-white">
+          {/* Header */}
+          <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center">
+                  <Image
+                    src="/images/eventdao_letter.png"
+                    alt="EventDAO"
+                    width={120}
+                    height={30}
+                    className="mr-8"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </div>
+                <div className="flex items-center gap-4">
+                  {mounted && <WalletMultiButton />}
+                </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-white mb-4">Explore Events</h1>
-            <p className="text-gray-600 mb-8">Connect your wallet to explore and stake on events</p>
-            <WalletMultiButton />
-          </div>
-        </main>
+          <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-white mb-4">Explore Events</h1>
+              <p className="text-gray-300 mb-8">Connect your wallet to explore and stake on events</p>
+              {mounted && <WalletMultiButton />}
+            </div>
+          </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Header */}
-      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
-                EventDAO
-              </Link>
-              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
-            </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
-              <Link href="/explore" className="text-green-400 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-gray-300 hover:text-white font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-300 hover:text-white font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-300 hover:text-white font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
-            </nav>
-            <div className="flex items-center gap-4">
-              <WalletMultiButton />
+    <div className="min-h-screen relative">
+      {/* Background Image */}
+      <div className="fixed-background"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        {/* Header */}
+        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center">
+                <Image
+                  src="/images/eventdao_letter.png"
+                  alt="EventDAO"
+                  width={120}
+                  height={30}
+                  className="mr-8"
+                  style={{ width: 'auto', height: 'auto' }}
+                />
+                <nav className="hidden md:flex items-center space-x-6">
+                  <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
+                  <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                  <Link href="/explore" className="text-green-400 font-medium">Explore Events</Link>
+                  <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                  <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                  <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                  <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+                </nav>
+              </div>
+              <div className="flex items-center gap-4">
+                {mounted && <WalletMultiButton />}
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
@@ -237,7 +274,8 @@ export default function ExplorePage() {
             ))}
           </div>
         )}
-      </main>
+        </main>
+      </div>
     </div>
   );
 }

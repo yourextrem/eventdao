@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     unoptimized: false,
+    qualities: [25, 50, 75, 90, 100],
   },
   
   // Environment variables validation

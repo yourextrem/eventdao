@@ -1,13 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export default function LeaderboardPage() {
   const { connected } = useWallet();
   const [timeframe, setTimeframe] = useState('all');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Mock data for demonstration
   const leaderboard = [
@@ -87,67 +93,98 @@ export default function LeaderboardPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-gray-900">
+      <div className="min-h-screen relative">
+        {/* Background Image */}
+        <div className="fixed inset-0 z-0">
+          <Image
+            src="/images/eventdao_background.png"
+            alt="EventDAO Background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+            style={{
+              objectPosition: 'center top'
+            }}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-white">
+          {/* Header */}
+          <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center">
+                  <Image
+                    src="/images/eventdao_letter.png"
+                    alt="EventDAO"
+                    width={120}
+                    height={30}
+                    className="mr-8"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </div>
+                <div className="flex items-center gap-4">
+                  {mounted && <WalletMultiButton />}
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-white mb-4">Leaderboard</h1>
+              <p className="text-gray-300 mb-8">Connect your wallet to view rankings</p>
+              {mounted && <WalletMultiButton />}
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen relative">
+      {/* Background Image */}
+      <div className="fixed-background"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 text-white">
         {/* Header */}
-        <header className="bg-gray-900 shadow-sm border-b border-gray-800">
+        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
-                  EventDAO
-                </Link>
-                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
+                <Image
+                  src="/images/eventdao_letter.png"
+                  alt="EventDAO"
+                  width={120}
+                  height={30}
+                  className="mr-8"
+                  style={{ width: 'auto', height: 'auto' }}
+                />
+                <nav className="hidden md:flex items-center space-x-6">
+                  <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
+                  <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                  <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                  <Link href="/leaderboard" className="text-green-400 font-medium">Leaderboard</Link>
+                  <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                  <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                  <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+                </nav>
               </div>
               <div className="flex items-center gap-4">
-                <WalletMultiButton />
+                {mounted && <WalletMultiButton />}
               </div>
             </div>
           </div>
         </header>
 
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
+          <div className="mb-8">
             <h1 className="text-3xl font-bold text-white mb-4">Leaderboard</h1>
-            <p className="text-gray-600 mb-8">Connect your wallet to view rankings</p>
-            <WalletMultiButton />
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Header */}
-      <header className="bg-gray-900 shadow-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300">
-                EventDAO
-              </Link>
-              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
-            </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-300 hover:text-white font-medium">Home</Link>
-              <Link href="/submit" className="text-gray-300 hover:text-white font-medium">Submit</Link>
-              <Link href="/explore" className="text-gray-300 hover:text-white font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-green-400 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-gray-300 hover:text-white font-medium">Wallet</Link>
-              <Link href="/admin" className="text-gray-300 hover:text-white font-medium">Admin</Link>
-              <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
-            </nav>
-            <div className="flex items-center gap-4">
-              <WalletMultiButton />
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Leaderboard</h1>
-          <p className="text-gray-600">Top verifiers and event authors in the EventDAO community</p>
+            <p className="text-gray-300">Top verifiers and event authors in the EventDAO community</p>
         </div>
 
         {/* Timeframe Filter */}
@@ -221,7 +258,7 @@ export default function LeaderboardPage() {
             <h2 className="text-xl font-bold text-white mb-6">Top Authors</h2>
             <div className="space-y-4">
               {topAuthors.map((author) => (
-                <div key={author.rank} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                <div key={author.rank} className="flex items-center justify-between p-4 bg-black bg-opacity-10 rounded-lg border border-gray-600 backdrop-blur-sm">
                   <div className="flex items-center gap-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                       author.rank === 1 ? 'bg-yellow-100 text-yellow-800' :
@@ -250,24 +287,25 @@ export default function LeaderboardPage() {
 
         {/* Stats Summary */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-blue-50 p-6 rounded-lg text-center">
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg text-center border border-gray-600 backdrop-blur-sm">
             <div className="text-2xl font-bold text-green-400 mb-2">156</div>
-            <div className="text-blue-800">Total Verifiers</div>
+            <div className="text-gray-300">Total Verifiers</div>
           </div>
-          <div className="bg-green-50 p-6 rounded-lg text-center">
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg text-center border border-gray-600 backdrop-blur-sm">
             <div className="text-2xl font-bold text-green-600 mb-2">89.2%</div>
-            <div className="text-green-800">Avg Accuracy</div>
+            <div className="text-gray-300">Avg Accuracy</div>
           </div>
-          <div className="bg-purple-50 p-6 rounded-lg text-center">
-            <div className="text-2xl font-bold text-purple-600 mb-2">2,847</div>
-            <div className="text-purple-800">Total Stakes</div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg text-center border border-gray-600 backdrop-blur-sm">
+            <div className="text-2xl font-bold text-purple-400 mb-2">2,847</div>
+            <div className="text-gray-300">Total Stakes</div>
           </div>
-          <div className="bg-orange-50 p-6 rounded-lg text-center">
-            <div className="text-2xl font-bold text-orange-600 mb-2">45</div>
-            <div className="text-orange-800">Active Authors</div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg text-center border border-gray-600 backdrop-blur-sm">
+            <div className="text-2xl font-bold text-orange-400 mb-2">45</div>
+            <div className="text-gray-300">Active Authors</div>
           </div>
         </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }

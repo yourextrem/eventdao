@@ -14,7 +14,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-black bg-opacity-40 rounded-lg border border-gray-600 backdrop-blur-sm">
+    <div className="bg-black bg-opacity-10 rounded-lg border border-gray-600 backdrop-blur-sm">
       <button
         className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
@@ -160,47 +160,43 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen relative" style={{backgroundImage: 'url(/images/eventdao_background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-      {/* Full Background Image */}
-      <div className="fixed inset-0 z-0">
-        <Image
-          src="/images/eventdao_background.png"
-          alt="EventDAO Background"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+    <div className="min-h-screen relative">
+      {/* Background Image */}
+      <div className="fixed-background"></div>
       
       {/* Content */}
       <div className="relative z-10 text-white">
         {/* Header */}
-        <header className="bg-black bg-opacity-30 border-b border-gray-600 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Image
-                src="/images/eventdao_letter.png"
-                alt="EventDAO"
-                width={120}
-                height={30}
-                className="mr-8"
-              />
-              <nav className="hidden md:flex items-center space-x-6">
-                <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
-                <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
-                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
-                <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
-                <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
-                <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
-              </nav>
-            </div>
-            <div className="flex items-center gap-4">
-              {mounted && <WalletMultiButton />}
+        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center">
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/images/eventdao_letter.png"
+                    alt="EventDAO"
+                    width={120}
+                    height={30}
+                    className="mr-8"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </Link>
+                <nav className="hidden md:flex items-center space-x-6">
+                  <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                  <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                  <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                  <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                  <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                  <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+                  <Link href="/video" className="text-white hover:text-green-400 font-medium">Video</Link>
+                </nav>
+              </div>
+              <div className="flex items-center gap-4">
+                {mounted && <WalletMultiButton />}
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       {/* Hero Section */}
       <section className="relative py-20">
@@ -214,6 +210,7 @@ export default function Home() {
                 width={900}
                 height={225}
                 className="mx-auto mb-8"
+                style={{ width: 'auto', height: 'auto' }}
                 priority
               />
             </div>
@@ -224,14 +221,20 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">EventDAO Demo</h2>
+            <p className="text-gray-300">Watch our introduction video</p>
+          </div>
           <div className="aspect-video bg-black bg-opacity-40 rounded-lg backdrop-blur-sm border border-gray-600 overflow-hidden">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🎥</div>
-                <p className="text-gray-400 mb-4">EventDAO Demo Video</p>
-                <p className="text-sm text-gray-500">Video content coming soon</p>
-              </div>
-            </div>
+            <video
+              className="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              poster="/images/eventdao_background.png"
+            >
+              <source src="/videos/Vau1t X MidEvils.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -294,6 +297,7 @@ export default function Home() {
               width={1200}
               height={600}
               className="mx-auto rounded-lg"
+              style={{ width: 'auto', height: 'auto' }}
             />
           </div>
           

@@ -118,62 +118,93 @@ export default function SubmitPage() {
 
   if (!connected) {
     return (
-      <div className="min-h-screen bg-gray-900 text-white">
-        {/* Header */}
-        <header className="bg-gray-900 border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center">
-                <Link href="/" className="text-2xl font-bold text-white hover:text-green-400">
-                  EVENTDAO
-                </Link>
-                <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <WalletMultiButton />
+      <div className="min-h-screen relative">
+        {/* Background Image */}
+        <div className="fixed inset-0 z-0">
+          <Image
+            src="/images/eventdao_background.png"
+            alt="EventDAO Background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+            style={{
+              objectPosition: 'center top'
+            }}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-white">
+          {/* Header */}
+          <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center h-16">
+                <div className="flex items-center">
+                  <Image
+                    src="/images/eventdao_letter.png"
+                    alt="EventDAO"
+                    width={120}
+                    height={30}
+                    className="mr-8"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </div>
+                <div className="flex items-center gap-4">
+                  {mounted && <WalletMultiButton />}
+                </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Submit an Event</h1>
-            <p className="text-gray-600 mb-8">Connect your wallet to submit events for verification</p>
-            <WalletMultiButton />
-          </div>
-        </main>
+          <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-white mb-4">Submit an Event</h1>
+              <p className="text-gray-300 mb-8">Connect your wallet to submit events for verification</p>
+              {mounted && <WalletMultiButton />}
+            </div>
+          </main>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-white hover:text-green-400">
-                EVENTDAO
-              </Link>
-              <span className="ml-2 text-sm text-gray-400">Solana Web3 Events</span>
-            </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
-              <Link href="/submit" className="text-green-400 font-medium">Submit</Link>
-              <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore</Link>
-              <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
-              <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
-              <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
-              <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
-            </nav>
-            <div className="flex items-center gap-4">
-              <WalletMultiButton />
+    <div className="min-h-screen relative">
+      {/* Background Image */}
+      <div className="fixed-background"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        {/* Header */}
+        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center">
+                <Image
+                  src="/images/eventdao_letter.png"
+                  alt="EventDAO"
+                  width={120}
+                  height={30}
+                  className="mr-8"
+                  style={{ width: 'auto', height: 'auto' }}
+                />
+                <nav className="hidden md:flex items-center space-x-6">
+                  <Link href="/" className="text-white hover:text-green-400 font-medium">Home</Link>
+                  <Link href="/submit" className="text-green-400 font-medium">Submit Event</Link>
+                  <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                  <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                  <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                  <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                  <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+                </nav>
+              </div>
+              <div className="flex items-center gap-4">
+                {mounted && <WalletMultiButton />}
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
@@ -184,7 +215,7 @@ export default function SubmitPage() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-2">
               Event Title *
             </label>
@@ -195,12 +226,12 @@ export default function SubmitPage() {
               value={formData.title}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
               placeholder="e.g., Coldplay Concert Jakarta 2025"
             />
           </div>
 
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
               Description *
             </label>
@@ -211,12 +242,12 @@ export default function SubmitPage() {
               onChange={handleInputChange}
               required
               rows={4}
-              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
               placeholder="Describe the event details..."
             />
           </div>
 
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label htmlFor="eventUrl" className="block text-sm font-medium text-gray-300 mb-2">
               Event URL
             </label>
@@ -226,7 +257,7 @@ export default function SubmitPage() {
               name="eventUrl"
               value={formData.eventUrl}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
               placeholder="https://example.com/event-details (optional)"
             />
             <p className="text-sm text-gray-400 mt-1">
@@ -234,44 +265,46 @@ export default function SubmitPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
-                Category *
-              </label>
-              <select
-                id="category"
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
-              >
-                <option value="concert">Concert</option>
-                <option value="conference">Conference</option>
-                <option value="sports">Sports</option>
-                <option value="festival">Festival</option>
-                <option value="seminar">Seminar</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
+                  Category *
+                </label>
+                <select
+                  id="category"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
+                >
+                  <option value="concert">Concert</option>
+                  <option value="conference">Conference</option>
+                  <option value="sports">Sports</option>
+                  <option value="festival">Festival</option>
+                  <option value="seminar">Seminar</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
 
-            <div>
-              <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
-                Event Date *
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleInputChange}
-                required
-                className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
-              />
+              <div>
+                <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+                  Event Date *
+                </label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
+                />
+              </div>
             </div>
           </div>
 
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label htmlFor="location" className="block text-sm font-medium text-gray-300 mb-2">
               Location *
             </label>
@@ -282,12 +315,12 @@ export default function SubmitPage() {
               value={formData.location}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
               placeholder="e.g., Jakarta Convention Center, Indonesia"
             />
           </div>
 
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label htmlFor="bond" className="block text-sm font-medium text-gray-300 mb-2">
               Bond Amount (SOL) *
             </label>
@@ -300,7 +333,7 @@ export default function SubmitPage() {
               required
               min="0.01"
               step="0.01"
-              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-gray-800 text-white"
+              className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-black bg-opacity-20 text-white"
             />
             <p className="text-sm text-gray-400 mt-1">
               Bond will be slashed if the event is proven to be fake or misleading
@@ -308,15 +341,15 @@ export default function SubmitPage() {
           </div>
 
           {/* Media Upload Section */}
-          <div>
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Event Media (Photos & Videos)
             </label>
             <div
               className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
                 dragActive 
-                  ? 'border-blue-500 bg-blue-50' 
-                  : 'border-gray-300 hover:border-gray-400'
+                  ? 'border-green-500 bg-green-50 bg-opacity-10' 
+                  : 'border-gray-600 hover:border-gray-500'
               }`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -324,14 +357,14 @@ export default function SubmitPage() {
               onDrop={handleDrop}
             >
               <div className="space-y-2">
-                <div className="text-gray-600">
+                <div className="text-gray-300">
                   <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-300">
                   <label htmlFor="file-upload" className="cursor-pointer">
-                    <span className="font-medium text-blue-600 hover:text-blue-500">
+                    <span className="font-medium text-green-400 hover:text-green-300">
                       Click to upload
                     </span>
                     <span className="ml-1">or drag and drop</span>
@@ -395,9 +428,9 @@ export default function SubmitPage() {
             )}
           </div>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
-            <h3 className="text-sm font-medium text-yellow-800 mb-2">Submission Guidelines</h3>
-            <ul className="text-sm text-yellow-700 space-y-1">
+          <div className="bg-black bg-opacity-10 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+            <h3 className="text-sm font-medium text-yellow-400 mb-2">Submission Guidelines</h3>
+            <ul className="text-sm text-gray-300 space-y-1">
               <li>• Provide accurate and verifiable event information</li>
               <li>• Include official event URL or ticketing link (optional)</li>
               <li>• Upload photos/videos to support your event claim</li>
@@ -428,13 +461,14 @@ export default function SubmitPage() {
                 });
                 setUploadedFiles([]);
               }}
-              className="flex-1 bg-gray-100 text-gray-300 py-3 px-6 rounded-md hover:bg-gray-200 transition-colors font-medium"
+              className="flex-1 bg-gray-700 text-white py-3 px-6 rounded-md hover:bg-gray-600 transition-colors font-medium"
             >
               Cancel
             </button>
           </div>
         </form>
       </main>
+      </div>
     </div>
   );
 }

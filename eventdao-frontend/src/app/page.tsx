@@ -182,13 +182,12 @@ export default function Home() {
                   />
                 </Link>
                 <nav className="hidden md:flex items-center space-x-6">
-                  <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
-                  <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
-                  <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
-                  <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
-                  <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
-                  <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
-                  <Link href="/video" className="text-white hover:text-green-400 font-medium">Video</Link>
+                <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
                 </nav>
               </div>
               <div className="flex items-center gap-4">
@@ -218,26 +217,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">EventDAO Demo</h2>
-            <p className="text-gray-300">Watch our introduction video</p>
-          </div>
-          <div className="aspect-video bg-black bg-opacity-40 rounded-lg backdrop-blur-sm border border-gray-600 overflow-hidden">
-            <video
-              className="w-full h-full object-cover"
-              controls
-              preload="metadata"
-              poster="/images/eventdao_background.png"
-            >
-              <source src="/videos/Vau1t X MidEvils.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-16">

@@ -43,7 +43,7 @@ export const supabase = isSupabaseConfigured
 
 // For server-side operations that require service role key
 // Only create admin client if service role key is available (server-side only)
-export const supabaseAdmin = process.env.SUPABASE_SERVICE_ROLE_KEY 
+export const supabaseAdmin = process.env.SUPABASE_SERVICE_ROLE_KEY && supabaseUrl
   ? createClient(
       supabaseUrl,
       process.env.SUPABASE_SERVICE_ROLE_KEY,

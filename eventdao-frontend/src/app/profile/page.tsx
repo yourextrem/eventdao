@@ -82,7 +82,7 @@ export default function ProfilePage() {
         const { supabase } = await import('@/lib/supabase')
         
         // Update auth.users metadata
-        const { data: authUpdateData, error: authUpdateError } = await supabase.auth.updateUser({
+        const { error: authUpdateError } = await supabase.auth.updateUser({
           data: {
             username: username,
             full_name: fullName,
@@ -97,7 +97,7 @@ export default function ProfilePage() {
         }
 
         // Update public.profiles table
-        const { data: profileUpdateData, error: profileUpdateError } = await supabase
+        const { error: profileUpdateError } = await supabase
           .from('profiles')
           .update({
             username: username,
@@ -146,9 +146,10 @@ export default function ProfilePage() {
           window.location.reload()
         }, 1500)
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Profile update error:', err)
-      setError(`Failed to update profile: ${err.message || 'Unknown error'}`)
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+      setError(`Failed to update profile: ${errorMessage}`)
     } finally {
       setLoading(false)
     }

@@ -33,8 +33,9 @@ export default function SimpleAuthModal({ isOpen, onClose }: SimpleAuthModalProp
         const { data, error } = await signUp(email, password, username, fullName)
         console.log('Sign up result:', { data, error })
         
-        if (error) {
-          setError(`Sign up failed: ${error.message}`)
+               if (error) {
+                 const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+                 setError(`Sign up failed: ${errorMessage}`)
         } else {
           setMessage('Check your email for the confirmation link!')
           setTimeout(() => {
@@ -52,8 +53,9 @@ export default function SimpleAuthModal({ isOpen, onClose }: SimpleAuthModalProp
         const { data, error } = await signIn(email, password)
         console.log('Sign in result:', { data, error })
         
-        if (error) {
-          setError(`Sign in failed: ${error.message}`)
+               if (error) {
+                 const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+                 setError(`Sign in failed: ${errorMessage}`)
         } else {
           setMessage('Successfully signed in!')
           setTimeout(() => {

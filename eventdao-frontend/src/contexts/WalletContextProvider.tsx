@@ -44,12 +44,7 @@ export const WalletContextProvider: FC<WalletContextProviderProps> = ({ children
           console.error('Wallet connection error:', error);
         }}
       >
-        <WalletModalProvider
-          featuredWallets={5}
-          containerClassName="wallet-adapter-modal-wrapper"
-          modalClassName="wallet-adapter-modal"
-          overlayClassName="wallet-adapter-modal-overlay"
-        >
+        <WalletModalProvider>
           {children}
         </WalletModalProvider>
       </WalletProvider>

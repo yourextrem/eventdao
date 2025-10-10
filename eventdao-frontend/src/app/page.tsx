@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useWallet } from '@solana/wallet-adapter-react';
 // import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import SimpleWalletButton from '@/components/SimpleWalletButton';
 import { CreateEventModal } from '@/components/CreateEventModal';
@@ -47,85 +46,19 @@ interface Event {
 }
 
 export default function Home() {
-  const { publicKey, connected } = useWallet();
-  const [events, setEvents] = useState<Event[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [userTickets, setUserTickets] = useState<Map<number, { hasTicket: boolean; isUsed: boolean }>>(new Map());
-  const [isEventDAOInitialized, setIsEventDAOInitialized] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isLoadingData, setIsLoadingData] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
   
   const {
-    loading,
-    error,
     createEvent,
-    buyTicket,
-    submitTicket,
-    fetchAllEvents,
-    fetchTicket,
   } = useEventDAO();
 
-  const loadEvents = useCallback(async () => {
-    if (!connected) return;
-    
-    setIsLoadingData(true);
-    try {
-      const fetchedEvents = await fetchAllEvents();
-      setEvents(fetchedEvents || []);
-      setIsEventDAOInitialized(Array.isArray(fetchedEvents));
-    } catch (err) {
-      console.error('Error loading events:', err);
-      setEvents([]);
-      setIsEventDAOInitialized(false);
-    } finally {
-      setIsLoadingData(false);
-    }
-  }, [fetchAllEvents, connected]);
 
-  const loadUserTickets = useCallback(async () => {
-    if (!publicKey || events.length === 0) return;
-    
-    try {
-      const tickets = new Map();
-      // Process tickets in parallel for better performance
-      const ticketPromises = events.map(async (event) => {
-        try {
-          const ticket = await fetchTicket(event.id, publicKey);
-          return [event.id, {
-            hasTicket: !!ticket,
-            isUsed: ticket?.isUsed || false,
-          }];
-        } catch {
-          return [event.id, { hasTicket: false, isUsed: false }];
-        }
-      });
-      
-      const results = await Promise.all(ticketPromises);
-      results.forEach(([eventId, ticketData]) => {
-        tickets.set(eventId, ticketData);
-      });
-      
-      setUserTickets(tickets);
-    } catch (err) {
-      console.error('Error loading user tickets:', err);
-    }
-  }, [publicKey, events, fetchTicket]);
 
-  useEffect(() => {
-    if (connected) {
-      loadEvents();
-    }
-  }, [connected, loadEvents]);
-
-  useEffect(() => {
-    if (connected && publicKey && events.length > 0) {
-      loadUserTickets();
-    }
-  }, [connected, publicKey, events, loadUserTickets]);
 
   const handleCreateEvent = async (eventData: {
     title: string;
@@ -135,29 +68,11 @@ export default function Home() {
   }) => {
     try {
       await createEvent(eventData);
-      await loadEvents();
     } catch (err) {
       console.error('Error creating event:', err);
     }
   };
 
-  const handleBuyTicket = async (eventId: number) => {
-    try {
-      await buyTicket(eventId);
-      await loadUserTickets();
-    } catch (err) {
-      console.error('Error buying ticket:', err);
-    }
-  };
-
-  const handleUseTicket = async (eventId: number) => {
-    try {
-      await submitTicket(eventId);
-      await loadUserTickets();
-    } catch (error) {
-      console.error('Error using ticket:', error);
-    }
-  };
 
 
   return (

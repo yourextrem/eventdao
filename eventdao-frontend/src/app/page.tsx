@@ -33,17 +33,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   );
 };
 
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  organizer: string;
-  maxParticipants: number;
-  currentParticipants: number;
-  ticketPrice: number;
-  isActive: boolean;
-  createdAt: number;
-}
+// Removed unused Event interface
 
 export default function Home() {
   const [showCreateModal, setShowCreateModal] = useState(false);

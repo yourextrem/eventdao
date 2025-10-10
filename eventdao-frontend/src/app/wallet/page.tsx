@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 interface Transaction {
   signature: string;
@@ -21,7 +21,7 @@ export default function WalletPage() {
   const [balance, setBalance] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [eveBalance, setEveBalance] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  // Removed unused isLoading state
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [faucetLoading, setFaucetLoading] = useState(false);
 
@@ -73,7 +73,6 @@ export default function WalletPage() {
     if (!publicKey) return;
     
     try {
-      setIsLoading(true);
       const solBalance = await connection.getBalance(publicKey);
       setBalance(solBalance / LAMPORTS_PER_SOL);
       
@@ -81,8 +80,6 @@ export default function WalletPage() {
       setEveBalance(150.5);
     } catch (error) {
       console.error('Error fetching balance:', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 

@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useWallet } from '@solana/wallet-adapter-react'
+// Removed unused useWallet import
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 
 export default function SimpleWalletButton() {
-  const { connected, publicKey, wallet, disconnect } = useWallet()
+  // Removed unused wallet variables
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {

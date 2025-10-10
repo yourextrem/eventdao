@@ -161,7 +161,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
         password,
       })
       return { data, error }
-    } catch (error) {
+    } catch {
       return { 
         data: null, 
         error: { 
@@ -238,7 +238,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
         }
       })
       return { data, error }
-    } catch (error) {
+    } catch {
       return { 
         data: null, 
         error: { 

@@ -5,7 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 
 export default function WalletButton() {
-  const { connected, connecting, disconnecting, publicKey, wallet, connect, disconnect } = useWallet()
+  const { connected, connecting, disconnecting, publicKey, disconnect } = useWallet()
   const [mounted, setMounted] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -20,15 +20,7 @@ export default function WalletButton() {
     }
   }, [error])
 
-  const handleConnect = async () => {
-    try {
-      setError(null)
-      await connect()
-    } catch (err) {
-      console.error('Connection error:', err)
-      setError(err instanceof Error ? err.message : 'Failed to connect wallet')
-    }
-  }
+  // Removed unused handleConnect function
 
   const handleDisconnect = async () => {
     try {

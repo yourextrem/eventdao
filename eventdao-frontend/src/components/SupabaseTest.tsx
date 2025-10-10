@@ -12,7 +12,7 @@ export default function SupabaseTest() {
       setConnectionStatus('Testing connection...')
       
       // Test basic connection
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('_test_connection')
         .select('*')
         .limit(1)

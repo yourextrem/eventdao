@@ -1,0 +1,199 @@
+/* Custom styles for wallet adapter buttons */
+.wallet-adapter-button-trigger {
+  display: inline-block;
+}
+
+.wallet-adapter-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: white !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  padding: 2px 8px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  height: auto !important;
+  min-height: 20px !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.wallet-adapter-button::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.wallet-adapter-button:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4) !important;
+}
+
+.wallet-adapter-button:hover::before {
+  left: 100% !important;
+}
+
+.wallet-adapter-button:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4) !important;
+}
+
+.wallet-adapter-button:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.wallet-adapter-button-trigger .wallet-adapter-button-start-icon {
+  margin-right: 6px !important;
+}
+
+.wallet-adapter-button-trigger .wallet-adapter-button-end-icon {
+  margin-left: 6px !important;
+}
+
+/* Custom hamburger icon for Connect Wallet */
+.wallet-adapter-button-trigger .wallet-adapter-button-start-icon::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 10px !important;
+  height: 10px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z'/%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-right: 4px !important;
+}
+
+/* Connected state styling */
+.wallet-adapter-button[data-connected="true"] {
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%) !important;
+  border: 2px solid #8b5cf6 !important;
+}
+
+.wallet-adapter-button[data-connected="true"]:hover {
+  background: linear-gradient(135deg, #5b21b6 0%, #4c1d95 100%) !important;
+  border-color: #a78bfa !important;
+}
+
+/* Wallet modal styles */
+.wallet-adapter-modal-wrapper {
+  z-index: 999999 !important;
+}
+
+.wallet-adapter-modal {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.wallet-adapter-modal-container {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.wallet-adapter-modal-title {
+  display: none !important;
+}
+
+.wallet-adapter-modal-list {
+  margin: 0 !important;
+}
+
+.wallet-adapter-modal-list-item {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 12px !important;
+  margin: 8px 0 !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+}
+
+.wallet-adapter-modal-list-item:hover {
+  background: #f8fafc !important;
+  border-color: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.wallet-adapter-modal-list-item button {
+  color: #1f2937 !important;
+  font-weight: 500 !important;
+  padding: 16px 20px !important;
+  font-size: 16px !important;
+  width: 100% !important;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.wallet-adapter-modal-button-close {
+  display: none !important;
+}
+
+/* Fix for input fields and buttons being clickable */
+input, button, select, textarea {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure modal content is interactive */
+.wallet-adapter-modal-container * {
+  pointer-events: auto !important;
+}
+
+/* Fix for auth modal inputs */
+input[type="email"], input[type="password"] {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 9999 !important;
+  background: #1f2937 !important;
+  color: white !important;
+  cursor: text !important;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+  outline: 2px solid #10b981 !important;
+  outline-offset: 2px !important;
+  border-color: #10b981 !important;
+}
+
+/* Specific fixes for auth modal */
+.auth-modal {
+  z-index: 10000000 !important;
+  position: fixed !important;
+}
+
+.auth-modal input {
+  pointer-events: auto !important;
+  z-index: 10000001 !important;
+  position: relative !important;
+  cursor: text !important;
+}
+
+.auth-modal button {
+  pointer-events: auto !important;
+  z-index: 10000001 !important;
+  position: relative !important;
+  cursor: pointer !important;
+}

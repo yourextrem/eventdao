@@ -4,9 +4,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+// import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import SimpleWalletButton from '@/components/SimpleWalletButton';
 import { CreateEventModal } from '@/components/CreateEventModal';
 import { useEventDAO } from '@/hooks/useEventDAO';
+import AuthButton from '@/components/AuthButton';
 
 // FAQ Component
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
@@ -166,7 +168,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 text-white">
         {/* Header */}
-        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5">
+        <header className="bg-transparent border-b border-gray-600 backdrop-blur-sm bg-black bg-opacity-5 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center">
@@ -180,17 +182,19 @@ export default function Home() {
                     style={{ width: 'auto', height: 'auto' }}
                   />
                 </Link>
-                <nav className="hidden md:flex items-center space-x-6">
-                <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
-                <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
-                <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
-                <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
-                <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
-                <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
-                </nav>
+                 <nav className="hidden md:flex items-center space-x-6">
+                   <Link href="/submit" className="text-white hover:text-green-400 font-medium">Submit Event</Link>
+                   <Link href="/explore" className="text-white hover:text-green-400 font-medium">Explore Events</Link>
+                   <Link href="/leaderboard" className="text-white hover:text-green-400 font-medium">Leaderboard</Link>
+                   <Link href="/wallet" className="text-white hover:text-green-400 font-medium">Wallet</Link>
+                   <Link href="/profile" className="text-white hover:text-green-400 font-medium">Profile</Link>
+                   <Link href="/admin" className="text-white hover:text-green-400 font-medium">Admin</Link>
+                   <Link href="/about" className="text-white hover:text-green-400 font-medium">About</Link>
+                 </nav>
               </div>
               <div className="flex items-center gap-4">
-                {mounted && <WalletMultiButton />}
+                <AuthButton />
+                {mounted && <SimpleWalletButton />}
               </div>
             </div>
           </div>
@@ -205,11 +209,12 @@ export default function Home() {
               <Image
                 src="/images/eventdao.png"
                 alt="EventDAO Logo"
-                width={900}
-                height={225}
+                width={1200}
+                height={300}
                 className="mx-auto mb-8"
-                style={{ width: 'auto', height: 'auto' }}
+                style={{ width: 'auto', height: 'auto', maxWidth: '90vw' }}
                 priority
+                sizes="(max-width: 768px) 90vw, 1200px"
               />
             </div>
           </div>
@@ -224,15 +229,29 @@ export default function Home() {
             <p className="text-gray-300">Watch our introduction video</p>
           </div>
           <div className="aspect-video bg-black bg-opacity-40 rounded-lg backdrop-blur-sm border border-gray-600 overflow-hidden">
+            {/* YouTube Embed - EventDAO Demo Video */}
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/g3ENX3aHlqU?si=j4A6TtO7ksgLO4V5"
+              title="EventDAO Demo"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+            
+            {/* Fallback for local development - comment out when using YouTube */}
+            {/* 
             <video
               className="w-full h-full object-cover"
               controls
-              preload="metadata"
+              preload="auto"
               poster="/images/eventdao_background.png"
             >
-              <source src="/videos/Vau1t X MidEvils.mp4" type="video/mp4" />
+              <source src="/videos/Vau1t%20X%20MidEvils.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            */}
           </div>
         </div>
       </section>
@@ -283,94 +302,55 @@ export default function Home() {
       </section>
 
       {/* Roadmap Section */}
-      <section className="py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-bold text-white mb-16 text-center">ROAD MAP</h2>
-          
-          {/* Roadmap Design Image */}
-          <div className="relative mb-8">
+      <section className="py-20 relative">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Roadmap Design Image with Overlay Text */}
+          <div className="relative flex justify-center items-center">
             <Image
               src="/images/roadmap_design.png"
               alt="EventDAO Roadmap Design"
-              width={1200}
-              height={600}
-              className="mx-auto rounded-lg"
-              style={{ width: 'auto', height: 'auto' }}
+              width={1400}
+              height={700}
+              className="mx-auto rounded-lg shadow-2xl"
+              style={{ width: 'auto', height: 'auto', maxWidth: '90vw' }}
             />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
-              <div className="text-center mb-4">
-                <div className="text-4xl mb-2">⛏️</div>
-                <h3 className="text-xl font-bold text-green-400">Phase 1 - Foundation</h3>
+            
+            {/* Phase 1 - Foundation (Top Center) */}
+            <div className="absolute top-16 left-1/2 transform -translate-x-1/2 md:top-20 lg:top-24">
+              <div className="bg-black bg-opacity-80 p-4 rounded-lg border border-green-500 backdrop-blur-sm max-w-xs">
+                <h3 className="text-lg font-bold text-green-400 mb-2">Phase 1 - Foundation</h3>
+                <p className="text-white text-sm">
+                  Core event verification system with staking mechanics, automatic resolution through APIs, 
+                  and NFT proof-of-attendance minting. Building the essential infrastructure for trustless event verification.
+                </p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Core event verification system with staking mechanism, accurate resolution through APIs, 
-                and NFT proof-of-attendance minting, building the essential infrastructure for trustless event verification.
-              </p>
             </div>
-            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
-              <div className="text-center mb-4">
-                <div className="text-4xl mb-2">🌱</div>
-                <h3 className="text-xl font-bold text-green-400">Phase 2 - Ecosystem</h3>
+
+            {/* Phase 2 - Ecosystem (Middle Center) */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="bg-black bg-opacity-80 p-4 rounded-lg border border-green-500 backdrop-blur-sm max-w-xs">
+                <h3 className="text-lg font-bold text-green-400 mb-2">Phase 2 - Ecosystem</h3>
+                <p className="text-white text-sm">
+                  Partner with event organizers, venues, and ticketing platforms. Launch community leaderboards, 
+                  achievement systems, and sponsor partnerships. Expand beyond crypto-native events.
+                </p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Partner with event organizers, venues, and ticketing platforms. Launch community leaderboards, 
-                achievement systems, and sponsor partnerships. Expand beyond crypto-native events.
-              </p>
             </div>
-            <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
-              <div className="text-center mb-4">
-                <div className="text-4xl mb-2">🌍</div>
-                <h3 className="text-xl font-bold text-green-400">Phase 3 - Global Standard</h3>
+
+            {/* Phase 3 - Global Standard (Bottom Center) */}
+            <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 md:bottom-20 lg:bottom-24">
+              <div className="bg-black bg-opacity-80 p-4 rounded-lg border border-green-500 backdrop-blur-sm max-w-xs">
+                <h3 className="text-lg font-bold text-green-400 mb-2">Phase 3 - Global Standard</h3>
+                <p className="text-white text-sm">
+                  Establish EventDAO as the universal standard for verifiable event attendance. Scale to millions 
+                  of events worldwide, with seamless integration across all major platforms and industries.
+                </p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Establish EventDAO as the universal standard for verifiable event attendance. Scale to millions 
-                of events worldwide, with seamless integration across all major platforms and industries.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Join Movement Section */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-black bg-opacity-40 p-8 rounded-lg border border-gray-600 backdrop-blur-sm">
-            <div className="flex items-center justify-center mb-4">
-              <span className="text-2xl mr-2">🚀</span>
-              <h2 className="text-3xl font-bold text-white">Join the Movement</h2>
-            </div>
-            <p className="text-gray-300 mb-8 text-lg">
-              Build public trust through verifiable events. Submit your claim, verify with the community, 
-              and collect your digital proof of attendance on Solana.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-              <Link 
-                href="/submit"
-                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
-              >
-                Submit a Claim
-              </Link>
-              <Link 
-                href="/explore"
-                className="px-8 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium"
-              >
-                Explore Claims
-              </Link>
-            </div>
-            <div className="text-sm text-gray-400">
-              <p className="mb-2">Built on Solana - Powered by Community</p>
-              <div className="flex justify-center gap-6">
-                <Link href="/" className="hover:text-green-400">Launch App</Link>
-                <Link href="/about" className="hover:text-green-400">Docs</Link>
-                <a href="#" className="hover:text-green-400">Join Discord</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* Create Event Modal */}

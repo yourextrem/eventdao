@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import SupabaseTest from '@/components/SupabaseTest';
+import AuthButton from '@/components/AuthButton';
 
 export default function AdminPage() {
   const { connected } = useWallet();
@@ -19,7 +21,8 @@ export default function AdminPage() {
     { id: 'config', name: 'Configuration', icon: '⚙️' },
     { id: 'events', name: 'Event Management', icon: '📅' },
     { id: 'users', name: 'User Management', icon: '👥' },
-    { id: 'analytics', name: 'Analytics', icon: '📊' }
+    { id: 'analytics', name: 'Analytics', icon: '📊' },
+    { id: 'database', name: 'Database', icon: '🗄️' }
   ];
 
   return (
@@ -53,6 +56,7 @@ export default function AdminPage() {
                 <Link href="/about" className="text-gray-300 hover:text-white font-medium">About</Link>
               </nav>
               <div className="flex items-center gap-4">
+                <AuthButton />
                 {mounted && <WalletMultiButton />}
               </div>
             </div>
@@ -295,6 +299,40 @@ export default function AdminPage() {
                     
                     <div className="mt-8 text-center py-8">
                       <p className="text-gray-400">Detailed analytics dashboard coming soon</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'database' && (
+                <div className="space-y-6">
+                  <div className="bg-black bg-opacity-10 rounded-lg border border-gray-600 backdrop-blur-sm p-6">
+                    <h2 className="text-xl font-bold text-white mb-4">Database Management</h2>
+                    
+                    <div className="space-y-6">
+                      <SupabaseTest />
+                      
+                      <div className="bg-black bg-opacity-40 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+                        <h3 className="text-lg font-bold text-white mb-4">Database Tables</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="bg-gray-800 p-4 rounded-lg">
+                            <h4 className="text-green-400 font-semibold mb-2">Events</h4>
+                            <p className="text-gray-300 text-sm">Store event information and metadata</p>
+                          </div>
+                          <div className="bg-gray-800 p-4 rounded-lg">
+                            <h4 className="text-green-400 font-semibold mb-2">Event Claims</h4>
+                            <p className="text-gray-300 text-sm">User claims and verification status</p>
+                          </div>
+                          <div className="bg-gray-800 p-4 rounded-lg">
+                            <h4 className="text-green-400 font-semibold mb-2">Profiles</h4>
+                            <p className="text-gray-300 text-sm">User profiles and preferences</p>
+                          </div>
+                          <div className="bg-gray-800 p-4 rounded-lg">
+                            <h4 className="text-green-400 font-semibold mb-2">Verifications</h4>
+                            <p className="text-gray-300 text-sm">Community verification records</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

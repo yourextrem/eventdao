@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import AuthButton from '@/components/AuthButton';
 
 export default function SubmitPage() {
   const { connected } = useWallet();
@@ -151,6 +152,7 @@ export default function SubmitPage() {
                   />
                 </div>
                 <div className="flex items-center gap-4">
+                  <AuthButton />
                   {mounted && <WalletMultiButton />}
                 </div>
               </div>
@@ -200,6 +202,7 @@ export default function SubmitPage() {
                 </nav>
               </div>
               <div className="flex items-center gap-4">
+                <AuthButton />
                 {mounted && <WalletMultiButton />}
               </div>
             </div>

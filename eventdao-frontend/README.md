@@ -18,7 +18,7 @@ Platform event terdesentralisasi yang dibangun di atas Solana blockchain menggun
 - **Solana CLI**: Tools untuk deployment dan testing
 
 ### Frontend
-- **Next.js 14**: React framework dengan App Router
+- **Next.js 15**: React framework dengan App Router
 - **TypeScript**: Type-safe JavaScript
 - **Tailwind CSS**: Utility-first CSS framework
 - **Solana Web3.js**: Library untuk interaksi dengan Solana blockchain
@@ -121,7 +121,14 @@ Program EventDAO memiliki struktur berikut:
 Buat file `.env.local` di folder frontend:
 
 ```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+
+# Solana Configuration
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
+NEXT_PUBLIC_RPC_ENDPOINT=https://api.devnet.solana.com
 NEXT_PUBLIC_PROGRAM_ID=GNe8wwPpE95PUCpSJsYf32Z3HLtL5CwaxoVRmd7DFsCH
 ```
 

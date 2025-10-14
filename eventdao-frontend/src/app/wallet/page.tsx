@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
@@ -38,7 +38,7 @@ export default function WalletPage() {
   };
 
   // Mock transaction history
-  const mockTransactions: Transaction[] = [
+  const mockTransactions: Transaction[] = useMemo(() => [
     {
       signature: '5K7...8H2',
       type: 'Faucet',
@@ -60,16 +60,9 @@ export default function WalletPage() {
       status: 'Success',
       timestamp: Date.now() - 10800000
     }
-  ];
+  ], []);
 
-  useEffect(() => {
-    if (connected && publicKey) {
-      fetchBalance();
-      setTransactions(mockTransactions);
-    }
-  }, [connected, publicKey, connection]);
-
-  const fetchBalance = async () => {
+  const fetchBalance = useCallback(async () => {
     if (!publicKey) return;
     
     try {
@@ -81,7 +74,14 @@ export default function WalletPage() {
     } catch (error) {
       console.error('Error fetching balance:', error);
     }
-  };
+  }, [publicKey, connection]);
+
+  useEffect(() => {
+    if (connected && publicKey) {
+      fetchBalance();
+      setTransactions(mockTransactions);
+    }
+  }, [connected, publicKey, fetchBalance, mockTransactions]);
 
   const handleFaucetClaim = async () => {
     if (!publicKey) return;

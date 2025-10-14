@@ -301,7 +301,7 @@ export default function Home() {
                 <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
               </div>
               <p className="text-gray-300 mb-6">
-                "EventDAO revolutionized how I verify events. The staking mechanism is brilliant and I've earned significant rewards for accurate predictions."
+                &ldquo;EventDAO revolutionized how I verify events. The staking mechanism is brilliant and I&apos;ve earned significant rewards for accurate predictions.&rdquo;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black font-bold mr-4">
@@ -319,7 +319,7 @@ export default function Home() {
                 <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
               </div>
               <p className="text-gray-300 mb-6">
-                "The NFT proof-of-attendance feature is amazing! I love collecting these digital memories from events I've attended."
+                &ldquo;The NFT proof-of-attendance feature is amazing! I love collecting these digital memories from events I&apos;ve attended.&rdquo;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
@@ -337,7 +337,7 @@ export default function Home() {
                 <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
               </div>
               <p className="text-gray-300 mb-6">
-                "Finally, a platform that brings transparency to event verification. The community-driven approach is exactly what we needed."
+                &ldquo;Finally, a platform that brings transparency to event verification. The community-driven approach is exactly what we needed.&rdquo;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">

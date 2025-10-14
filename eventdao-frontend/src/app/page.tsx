@@ -122,6 +122,100 @@ export default function Home() {
                 sizes="(max-width: 768px) 90vw, 1200px"
               />
             </div>
+            
+            {/* Hero Content */}
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Decentralized Event
+                <span className="text-green-400 block">Verification Platform</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+                Verify real-world events on Solana blockchain. Stake tokens, earn rewards, 
+                and collect Proof of Attendance NFTs.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <Link 
+                  href="/explore" 
+                  className="bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  Explore Events
+                </Link>
+                <Link 
+                  href="/submit" 
+                  className="bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Submit Event
+                </Link>
+              </div>
+              
+              {/* Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div className="bg-black bg-opacity-30 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-green-400 mb-2">1,000+</div>
+                  <div className="text-gray-300">Events Verified</div>
+                </div>
+                <div className="bg-black bg-opacity-30 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-green-400 mb-2">50,000+</div>
+                  <div className="text-gray-300">Active Users</div>
+                </div>
+                <div className="bg-black bg-opacity-30 p-6 rounded-lg border border-gray-600 backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-green-400 mb-2">$2M+</div>
+                  <div className="text-gray-300">Total Staked</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">How EventDAO Works</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              A revolutionary platform that combines blockchain technology with real-world event verification
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm hover:border-green-500 transition-all duration-300">
+              <div className="text-green-400 text-4xl mb-4">🎯</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Submit Events</h3>
+              <p className="text-gray-300 mb-6">
+                Create event claims with supporting evidence. Set up verification criteria and stake requirements.
+              </p>
+              <Link href="/submit" className="text-green-400 hover:text-green-300 font-medium">
+                Submit Event →
+              </Link>
+            </div>
+            
+            {/* Feature 2 */}
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm hover:border-green-500 transition-all duration-300">
+              <div className="text-green-400 text-4xl mb-4">💰</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Stake & Verify</h3>
+              <p className="text-gray-300 mb-6">
+                Stake tokens on event authenticity. Community decides through consensus and earns rewards for accuracy.
+              </p>
+              <Link href="/explore" className="text-green-400 hover:text-green-300 font-medium">
+                Explore Events →
+              </Link>
+            </div>
+            
+            {/* Feature 3 */}
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm hover:border-green-500 transition-all duration-300">
+              <div className="text-green-400 text-4xl mb-4">🏆</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Earn Rewards</h3>
+              <p className="text-gray-300 mb-6">
+                Collect Proof of Attendance NFTs and earn SOL rewards for accurate predictions and event participation.
+              </p>
+              <Link href="/wallet" className="text-green-400 hover:text-green-300 font-medium">
+                View Wallet →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -144,19 +238,6 @@ export default function Home() {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
-            
-            {/* Fallback for local development - comment out when using YouTube */}
-            {/* 
-            <video
-              className="w-full h-full object-cover"
-              controls
-              preload="auto"
-              poster="/images/eventdao_background.png"
-            >
-              <source src="/videos/Vau1t%20X%20MidEvils.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            */}
           </div>
         </div>
       </section>
@@ -206,6 +287,72 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">What Users Say</h2>
+            <p className="text-xl text-gray-300">Join thousands of users who trust EventDAO</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p className="text-gray-300 mb-6">
+                "EventDAO revolutionized how I verify events. The staking mechanism is brilliant and I've earned significant rewards for accurate predictions."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black font-bold mr-4">
+                  A
+                </div>
+                <div>
+                  <div className="text-white font-medium">Alex Chen</div>
+                  <div className="text-gray-400 text-sm">Event Organizer</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p className="text-gray-300 mb-6">
+                "The NFT proof-of-attendance feature is amazing! I love collecting these digital memories from events I've attended."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  S
+                </div>
+                <div>
+                  <div className="text-white font-medium">Sarah Johnson</div>
+                  <div className="text-gray-400 text-sm">Crypto Enthusiast</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-black bg-opacity-30 p-8 rounded-lg border border-gray-600 backdrop-blur-sm">
+              <div className="flex items-center mb-4">
+                <div className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p className="text-gray-300 mb-6">
+                "Finally, a platform that brings transparency to event verification. The community-driven approach is exactly what we needed."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  M
+                </div>
+                <div>
+                  <div className="text-white font-medium">Mike Rodriguez</div>
+                  <div className="text-gray-400 text-sm">Blockchain Developer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Roadmap Section */}
       <section className="py-20 relative">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,6 +398,35 @@ export default function Home() {
                   of events worldwide, with seamless integration across all major platforms and industries.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 p-12 rounded-2xl border border-green-500/30 backdrop-blur-sm">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Join the Revolution?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Start verifying events, earning rewards, and collecting Proof of Attendance NFTs today. 
+              Join thousands of users in the decentralized event verification ecosystem.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link 
+                href="/explore" 
+                className="bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Get Started Now
+              </Link>
+              <Link 
+                href="/about" 
+                className="bg-transparent border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Learn More
+              </Link>
             </div>
           </div>
         </div>

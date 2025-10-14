@@ -54,3 +54,4 @@ test-ledger/
 # Temporary files
 *.tmp
 *.temp
+.vercel

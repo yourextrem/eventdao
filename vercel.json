@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd eventdao-frontend && npm run build",
+  "outputDirectory": "eventdao-frontend/.next",
+  "installCommand": "cd eventdao-frontend && npm install",
+  "devCommand": "cd eventdao-frontend && npm run dev",
+  "framework": "nextjs"
+}
